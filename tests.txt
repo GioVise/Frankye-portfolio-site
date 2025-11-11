@@ -5,3 +5,58 @@ color for txt:
 
 - #dc4646 no AA
 - #af3737 meglio, è AA
+
+cose utili:
+
+
+/*marquee styles*/
+/* Definiamo l'animazione di scorrimento */
+@keyframes marquee-scroll {
+  0% { 
+    transform: translateX(0); 
+  }
+  100% { 
+    /* Sposta la traccia a sinistra del 50% (la larghezza di un gruppo) */
+    transform: translateX(-50%); 
+  }
+}
+
+.marquee-container {
+  width: 100%;
+  overflow: hidden; /* Nasconde ciò che esce dai bordi (fondamentale) */
+  /* Aggiungi un po' di spazio per non attaccarlo ad altri elementi */
+  margin: 2em; 
+}
+
+.marquee-track {
+  display: flex;
+  /* Larghezza doppia (gruppo 1 + gruppo 2) */
+  width: 200%; 
+  
+  /* Applica l'animazione */
+  animation: marquee-scroll 20s linear infinite;
+  /* 20s = velocità (cambia questo valore)
+     linear = velocità costante
+     infinite = ripeti all'infinito */
+}
+
+.marquee-track img {
+  /* Fai in modo che le immagini si adattino alla traccia */
+  width: 100%; 
+  height: auto;
+}
+
+/* --- Accessibilità e Usabilità --- */
+
+/* 1. Metti in pausa l'animazione quando l'utente ci passa sopra col mouse */
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* 2. Disattiva l'animazione se l'utente lo ha chiesto nel sistema
+      (Dovresti già averlo nel tuo file, ma è bene ripeterlo) */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}

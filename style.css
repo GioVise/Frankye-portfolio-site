@@ -127,6 +127,7 @@ main h1{
 main h2{
     text-align: center;
     margin-top: 1.5em;
+    padding-top: 1em;
     margin-bottom: 1em;
     font-size: 2em;
 }
@@ -156,6 +157,7 @@ main a:link{
     margin-top: 1em;
 }
 
+/*presentazione section*/
 .presentazione{
     display: flex;
     align-items: center;
@@ -232,7 +234,6 @@ main a:link{
     width: 100%;
     height: auto;
 }
-
 
 /*footer*/
 footer p {
