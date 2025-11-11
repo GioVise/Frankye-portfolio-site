@@ -156,6 +156,10 @@ main a:link{
 .content ul li{
     margin-top: 1em;
 }
+.grosso{
+    font-size: 1.5em;
+    font-weight: bold;
+}
 
 /*presentazione section*/
 .presentazione{
