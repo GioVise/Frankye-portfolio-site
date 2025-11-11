@@ -1,0 +1,7 @@
+color for txt:
+- #4A403E no good 'cause color diff is 472
+- #343333 good 'cause color diff is 518
+    aggiornamento: non serve curare la color diff, quindi ritorno al primo
+
+- #dc4646 no AA
+- #af3737 meglio, è AA
