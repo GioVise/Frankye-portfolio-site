@@ -147,7 +147,7 @@ main a:link{
 
 /*content inside main*/
 .content{
-    scroll-margin-top: 3em; /*spazio tra inizio sezione e breadcrumb*/
+    scroll-margin-top: 5em; /*spazio tra inizio sezione e breadcrumb*/
 }
 .content ul{
     list-style-type: none;
