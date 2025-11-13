@@ -12,13 +12,23 @@
     --linkcoloronblack:#ffd062;
 }
 
+/*------------------------------------------------*/
+/*============HTML SECTION========================*/
+
 html, body{   /*si applica ovunque*/
     font-size: 100%;    /*grande quanto decide l'utente*/
     font-family: "Lexend", Roboto, sans-serif;  /*Lexend lo metto tra "" perché non so se lo ha*/
     line-height: 1.5em;   /*IMPARALO!!!*/
 }
+body{
+    min-height: 100%;
 
+    /* 2. Attiva Flexbox in modalità colonna */
+    display: flex;
+    flex-direction: column;
+}
 html{
+    height: 100%;
     scroll-behavior: smooth;
     background-color: var(--backgroundcolor);
     color: var(--txtcolor);
@@ -37,20 +47,26 @@ html{
   html {
     scroll-behavior: auto !important;
   }
+  html, footer{
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
 }
 
-/*breadcrumb styles*/
+/*------------------------------------------------*/
+/*==========BREADCRUMB SECTION====================*/
+
 #breadcrumb{
     font-weight: bold;
     font-size: large;
-    text-align: left;
+    text-align: center;
     position: sticky; /* Diventa "appiccicoso" */
     top: 0;           /* Si attacca all'alto */
     background-color: var(--backgroundcolor);
     padding: 0.5em;   /* Un po' di padding per non farlo sembrare schiacciato */
     z-index: 100;     /* Assicurati che stia sopra gli altri elementi */
     justify-content: center;
-    display: flex;          /* Attiva Flexbox: mette tutto in riga */
+    display: flex;          /* Attiva Flexbox: mette tutto in riga */ 
     align-items: center;    /* Centra verticalmente testo e immagine */
     gap: 15px;              /* Spazio uniforme tra gli elementi */
 }
@@ -60,46 +76,48 @@ html{
     width: auto;    /* Mantiene le proporzioni */
 }
 
-/*header styles*/
+/*------------------------------------------------*/
+/*============HEADER SECTION======================*/
+
 header{
-    padding: 0em 0em;
-    margin: 0em;
-    background-image: url("images/sfondo.svg");
-    background-size: cover;
-    background-position: top center;
-    height: 100vh;
-    overflow: hidden;
+    background-color: var(--txtcolor);
+    color: var(--backgroundcolor);
+    text-align: center;
+}
+header h1{
+    font-size: 4em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
-/*menu link colors*/
+/*------------------------------------------------*/
+/*============MENU SECTION========================*/
 #menu{
-    float:right;
     font-size: 1em;
-    margin-top: 20%;
-    margin-right: 0.5em;
-    text-align: right; /*allineo il testo a destra*/
-}
-#menu a:link{
-    color: var(--linkcolor);
-}
-#menu a:visited {
-    color: var(--visitedlinkcolor);
 }
 #menu ul{
-    list-style-type: none;
+    display: flex;  /* ATTIVA FLEXBOX */
+    list-style: none; /* Rimuove i pallini (se non l'hai già fatto) */
+    margin: 0;
+    padding: 0;
+    padding-top: 1em;
+
+    justify-content: center; 
+
+    gap: 2em
 }
-#menu ul li{
-    margin-top: 1em;
+#menu a:link{
+    color: var(--linkcoloronblack);
+}
+#menu a:visited {
+    color: var(--vislinkonblack);
 }
 #currentLink{
     font-weight: bold;
     font-size: large;
-    background-image: url("images/arrow-.png");
-    background-position: 0px center;
-    padding-left: 2em;
-    background-size: 1.5em;
-    background-repeat: no-repeat;
 }
+
+/* Specific background positions for different pages
 #home #currentLink{
     background-position: 3em;
 }
@@ -109,14 +127,26 @@ header{
 #contatti #currentLink{
     background-position: 1.5em;
 }
+*/
 
-/*main content*/
+/*separatore G*/
+.separatore {
+    height: 3em;
+    width: auto;
+    background-color: var(--backgroundcolor);
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/*------------------------------------------------*/
+/*============MAIN SECTION========================*/
 main{
     background-color: var(--txtcolor);
     color: var(--backgroundcolor);
     margin-left: 1em;
     margin-right: 1em;
     padding-bottom: 2em;
+    flex-grow: 1;
 }
 main h1{
     text-align: center;
@@ -126,16 +156,15 @@ main h1{
 }
 main h2{
     text-align: center;
-    margin-top: 1.5em;
     padding-top: 1em;
     margin-bottom: 1em;
-    font-size: 2em;
+    font-size: 3em;
 }
 main p{
     text-align: center;
     line-height: 2em;
-    margin-left: 10em;
-    margin-right: 10em;
+    margin-left: 5em;
+    margin-right: 5em;
     padding-bottom: 2em ;
 }
 main a:visited{
@@ -145,48 +174,84 @@ main a:link{
     color: var(--linkcoloronblack);
 }
 
-/*content inside main*/
+/*------------------------------------------------*/
+/*============CONTENT SECTION=====================*/
+
 .content{
     scroll-margin-top: 5em; /*spazio tra inizio sezione e breadcrumb*/
 }
+
+/*
 .content ul{
     list-style-type: none;
-    text-align: center;
+    text-align: left;
+    padding-right: 5em;
 }
 .content ul li{
     margin-top: 1em;
 }
-.grosso{
-    font-size: 1.5em;
-    font-weight: bold;
+*/
+
+/*------------------------------------------------*/
+/*============CONTACTS SECTION====================*/
+#contacts{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 2em 4em;
+    align-items: start;
+}
+#contacts h1{
+    grid-column: 1 / -1;/* (Significa: inizia dalla colonna 1 e finisci all'ultima) */
+    align-items: center;
 }
 
-/*presentazione section*/
+#contacts p{
+    text-align: right;
+}
+#grosso{
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+/*------------------------------------------------*/
+/*==========PRESENTAZIONE SECTION=================*/
 .presentazione{
+    /*
     display: flex;
     align-items: center;
     gap: 2em;
-    margin-bottom:2em ;
-}
-.presentazione img{
-    width: 12em;
-    height: auto;
-    border-radius: 1em;
-    margin-left: 10em;
+    */
+    margin-bottom:2em;
 }
 .presentazione p{
-    margin-left: 0em;
-    margin-right: 10em;
-    margin-top: 2em;
-    flex: 1;
-    text-align: left;
+    text-align: center;
+}
+.presentazione_frankye{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    
+    margin: 1em auto; 
+    max-width: 900px;
+}
+.presentazione_frankye img {
+    width: 8em; 
+    height: 8em;
+    border-radius: 70px;/
+}
+.presentazione_frankye p{
+    text-align: center;
 }
 
-/*pagine section*/
-.pagine{
-    margin: 3em 0;
+/*------------------------------------------------*/
+/*============PAGINE SECTION======================*/
+#pagine{
+    margin: 2em 0;
 }
-.pagine ul{
+#pagine ul{
     display: flex;            /* 1. Mette i <li> in riga */
     justify-content: center;  /* 2. Centra il gruppo di immagini nella pagina */
     gap: 8em;                /* 3. Crea spazio tra un'immagine e l'altra */
@@ -195,51 +260,28 @@ main a:link{
     list-style: none; /* Rimuove i pallini della lista */
     padding: 0;       /* Rimuove il padding di default dell'<ul> */
 }
-.pagine a {
-    display: block; /* Buona pratica per i link che contengono solo immagini */
-    transition: transform 0.2s ease-in-out; /* Effetto al passaggio del mouse */
-}
-.pagine img {
+.pagina img{
     width: 8em; 
     height: 8em;
     object-fit: cover; /* Evita che l'immagine si deformi */
 
     border-radius: 70px;
 }
-.pagine a:hover {
-  transform: scale(1.05) rotate(2deg); /* Leggero ingrandimento e rotazione */
+
+/*===============================================*/
+/*============ UTILITY CLASSES ==================*/
+.card-hover-effect {
+  display: block; /* Buona pratica per i link-immagine */
+  transition: transform 0.2s ease-in-out;
 }
 
-/*separatore G*/
-.g_separatore {
-    height: 5.5em; 
-    width: auto;
-    background-image: url('images/G.jpg');
-    background-repeat: repeat-x; /*ripete solo orizzontalmente */
-    background-position: center; /* Centra le G verticalmente nel div */
-    background-size: auto 100%;
-    margin-top: 1em;
-    margin-bottom: 1em;
+.card-hover-effect:hover {
+  transform: scale(1.05) rotate(2deg);
 }
 
-.gallery{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5em;      /* Spazio tra le celle */
-    margin: 0 auto; /* Centra la griglia se c'è spazio extra */
-    max-width: 55em; /* Limita la larghezza massima della galleria */
-}
-.gallery figcaption{
-    font-size: smaller;
-    padding-bottom: 2em;
-    text-align: center;
-}
-.gallery img{
-    width: 100%;
-    height: auto;
-}
 
-/*footer*/
+/*------------------------------------------------*/
+/*============FOOTER SECTION======================*/
 footer p {
     text-align: center;
     font-style: italic;
@@ -248,29 +290,4 @@ footer p {
     padding-top: 1em;
     background-color: var(--main-color);
     color: var(--txtcolor);
-}
-
-.backtotop{
-    position: fixed;
-    bottom: 15px;
-    right: 20px;
-    z-index: 100;
-
-    /*stile del pulsante*/
-    background-color: var(--backgroundcolor);
-    background-image: url('images/arrow,.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 50%; /* Fai l'icona un po' più piccola del pulsante */
-
-    /* 3. Stile del pulsante (es. tondo) */
-    border-radius: 50%; /* Lo fa tondo */
-    border: 2px solid var(--txtcolor);
-
-    /* Sposta il testo fuori dallo schermo, ma lo lascia leggibile per gli screen reader */
-    text-indent: -9999px;
-    overflow: hidden; /* Assicura che non si veda il testo spostato */
-
-    width: 3em;
-    height: 3em;
 }

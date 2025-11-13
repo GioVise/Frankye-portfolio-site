@@ -17,15 +17,17 @@
 
 <body id="home"> 
     <header>
+        
         <nav id="menu">
         <ul>
             <li lang="en" id="currentLink">Home</li>
-            <li> <a href="progetti_scolastici.html">Progetti scolastici</a></li>
+            <li><a href="progetti_scolastici.html">Progetti scolastici</a></li>
             <li><a href="progetti_personali.html">Progetti personali</a></li>
-            <li><a href="frankye_lamerda.html#content">Frankye LaMerda</a></li>
+<!--            <li><a href="frankyeFold/frankye_lamerda.html">Frankye LaMerda (↗️)</a></li> -->
             <li><a href="contatti.html#content">Contatti</a></li>
         </ul>
-    </nav>
+        <h1>Portfolio</h1>
+        </nav>
     </header>
 
     <nav id="breadcrumb">
@@ -36,36 +38,61 @@
 
     <main>
         <section id="content" class="content">
-            <h1>Buonasera, come va?</h1>
-            <p>Questo è il mio portfolio personale dove puoi trovare i miei progetti scolastici e personali. 
+            <h2>Buonasera, come va?</h2>
+            <p>Questo è il mio portfolio personale dove puoi trovare i miei progetti scolastici e personali.<br>
             Esplora le sezioni per scoprire di più sui miei lavori e interessi!</p>
         </section>
 
-        <div class="g_separatore"></div>
+        <div class="separatore"></div>
 
-        <section class="pagine">
+        <section class="content">
+            <h2 lang="en">Who am I?</h2>
+            <div class="presentazione">
+                <p lang="it">I was born in Bassano del Grappa (VI) on the 19th of August 2004, on a Thursday.<br>I studied at Liceo Brocchi Scientifico opzione Scienze Applicate and now I am studying Computer Science at the University of Padua.<br>Outside of things I am learning and have learnt at Unipd, I know how to use both Unity and Blender, but I have never learnt them in school, so I can't really say I know them perfectly.</p>
+            </div>
+        </section>
+
+        <section id="pagine">
             <ul>
                 <li>
-                <a href="progetti_personali.html">
-                    <img src="images/S.png" alt="Progetti scolastici">
-                </a>
+                    <div class="pagina">
+                    <a href="progetti_scolastici.html" class="card-hover-effect">
+                        <img src="images/S.png" alt="Progetti scolastici">
+                    </a>
+                </div>
                 </li>
                 <li>
-                <a href="progetti_personali.html">
-                    <img src="images/P.png" alt="Progetti personali">
-                </a>
+                    <div class="pagina">
+                        <a href="progetti_personali.html" class="card-hover-effect">
+                            <img src="images/P.png" alt="Progetti personali">
+                        </a>
+                    </div>
                 </li>
-                <li>
-                <a href="frankye_lamerda.html">
+                <!--<li>
+                <a href="frankyeFold/frankye_lamerda.html">
                     <img src="images/F.png" alt="Frankye LaMerda">
                 </a>
-                </li>
+                </li>-->
                 <li>
-                <a href="contatti.html">
-                    <img src="images/C.png" alt="Contatti">
-                </a>
+                    <div class="pagina">
+                        <a href="contatti.html" class="card-hover-effect">
+                            <img src="images/C.png" alt="Contatti">
+                        </a>
+                    </div>
                 </li>
             </ul>
+        </section>
+
+        <div class="separatore"></div>
+
+        <section class="content">
+            <h2>Frankye's case</h2>
+            <div class="presentazione presentazione_frankye">
+                <p lang="it">Frankye è un personaggio, un mostro, una maschera, un animale carnale.<br>E' un personaggio, una persona, un qualcosa che ama la musica, ama disegnare, ma senza saperlo fare.<br>Vuoi fargli visita? Ecco il suo sito!</p>
+                <a href="frankyeFold/frankye_lamerda.html" class="card-hover-effect">
+                    <img src="images/F.png" alt="Frankye LaMerda">
+                </a>
+            </div>
         </section>
         
     </main>
