@@ -1,0 +1,205 @@
+* {
+    padding: 0em;
+    margin:0em;
+}
+
+:root{
+    --backgroundcolor: #E0E0E0;
+    --txtcolor: #4A403E;
+    --linkcolor:#793800;
+    --visitedlinkcolor:#ff6200;
+    --vislinkonblack:#ff684d;
+    --linkcoloronblack:#ffd062;
+}
+
+html, body{   /*si applica ovunque*/
+    font-size: 100%;    /*grande quanto decide l'utente*/
+    font-family: "Lexend", Roboto, sans-serif;  /*Lexend lo metto tra "" perché non so se lo ha*/
+    line-height: 1.5em;   /*IMPARALO!!!*/
+}
+
+html{
+    scroll-behavior: smooth;
+    background-color: var(--backgroundcolor);
+    color: var(--txtcolor);
+    margin: auto;
+}
+
+/*gesione animazioni*/
+@media (prefers-reduced-motion: reduce) {
+  /* Disattiva tutte le transizioni e animazioni */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Disattiva anche lo scroll "fluido" */
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+/*breadcrumb styles*/
+#breadcrumb{
+    font-weight: bold;
+    font-size: large;
+    text-align: left;
+    position: sticky; /* Diventa "appiccicoso" */
+    top: 0;           /* Si attacca all'alto */
+    background-color: var(--backgroundcolor);
+    padding: 0.5em;   /* Un po' di padding per non farlo sembrare schiacciato */
+    z-index: 100;     /* Assicurati che stia sopra gli altri elementi */
+    justify-content: center;
+    display: flex;          /* Attiva Flexbox: mette tutto in riga */
+    align-items: center;    /* Centra verticalmente testo e immagine */
+    gap: 15px;              /* Spazio uniforme tra gli elementi */
+}
+
+.breadcrumbG{
+    height: 2em;  /* Altezza relativa alla dimensione del testo (così si adatta) */
+    width: auto;    /* Mantiene le proporzioni */
+}
+
+/*header styles*/
+header{
+    padding: 0em 0em;
+    margin: 0em;
+    background-image: url("../images/sfondo.svg");
+    background-size: cover;
+    background-position: top center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/*main content*/
+main{
+    background-color: var(--txtcolor);
+    color: var(--backgroundcolor);
+    margin-left: 1em;
+    margin-right: 1em;
+    padding-bottom: 2em;
+}
+main h1{
+    text-align: center;
+    margin-bottom: 1em;
+    padding-top: 1em;
+    font-size: 3em;
+}
+main h2{
+    text-align: center;
+    margin-top: 1.5em;
+    padding-top: 1em;
+    margin-bottom: 1em;
+    font-size: 2em;
+}
+main p{
+    text-align: center;
+    line-height: 2em;
+    margin-left: 10em;
+    margin-right: 10em;
+    padding-bottom: 2em ;
+}
+main a:visited{
+    color: var(--vislinkonblack);
+}
+main a:link{
+    color: var(--linkcoloronblack);
+}
+
+/*content inside main*/
+.content{
+    scroll-margin-top: 5em; /*spazio tra inizio sezione e breadcrumb*/
+}
+.content ul{
+    list-style-type: none;
+    text-align: center;
+}
+.content ul li{
+    margin-top: 1em;
+}
+
+/*presentazione section*/
+.presentazione{
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    margin-bottom:2em ;
+}
+.presentazione img{
+    width: 12em;
+    height: auto;
+    border-radius: 1em;
+    margin-left: 10em;
+}
+.presentazione p{
+    margin-left: 0em;
+    margin-right: 10em;
+    margin-top: 2em;
+    flex: 1;
+    text-align: left;
+}
+
+/*separatore G*/
+.g_separatore {
+    height: 5.5em; 
+    width: auto;
+    background-image: url('../images/G.jpg');
+    background-repeat: repeat-x; /*ripete solo orizzontalmente */
+    background-position: center; /* Centra le G verticalmente nel div */
+    background-size: auto 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5em;      /* Spazio tra le celle */
+    margin: 0 auto; /* Centra la griglia se c'è spazio extra */
+    max-width: 55em; /* Limita la larghezza massima della galleria */
+}
+.gallery figcaption{
+    font-size: smaller;
+    padding-bottom: 2em;
+    text-align: center;
+}
+.gallery img{
+    width: 100%;
+    height: auto;
+}
+
+/*footer*/
+footer p {
+    text-align: center;
+    font-style: italic;
+    font-size: small; /*small è meglio di 0.74em, tipico del footer e della breadump */
+    padding-bottom: 1em;
+    padding-top: 1em;
+    background-color: var(--main-color);
+    color: var(--txtcolor);
+}
+
+.backtotop{
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    z-index: 100;
+
+    /*stile del pulsante*/
+    background-color: var(--backgroundcolor);
+    background-image: url('../images/arrow,.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%; /* Fai l'icona un po' più piccola del pulsante */
+
+    /* 3. Stile del pulsante (es. tondo) */
+    border-radius: 50%; /* Lo fa tondo */
+    border: 2px solid var(--txtcolor);
+
+    /* Sposta il testo fuori dallo schermo, ma lo lascia leggibile per gli screen reader */
+    text-indent: -9999px;
+    overflow: hidden; /* Assicura che non si veda il testo spostato */
+
+    width: 3em;
+    height: 3em;
+}
