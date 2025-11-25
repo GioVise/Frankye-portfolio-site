@@ -7,8 +7,8 @@
     --backgroundcolor: #E0E0E0;
     --txtcolor: #4A403E;
     --linkcolor:#793800;
-    --visitedlinkcolor:#ff6200;
-    --vislinkonblack:#ff684d;
+    --visitedlinkcolor:#f9bf3b;
+    --vislinkonblack:#f9bf3b;
     --linkcoloronblack:#ffd062;
 }
 
@@ -107,10 +107,10 @@ header h1{
     gap: 2em
 }
 #menu a:link{
-    color: var(--linkcoloronblack);
+    color: var(--txtcolor);
 }
 #menu a:visited {
-    color: var(--vislinkonblack);
+    color: var(--txtcolor);
 }
 #currentLink{
     font-weight: bold;

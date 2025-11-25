@@ -41,43 +41,78 @@ html{
 
 /*breadcrumb styles*/
 #breadcrumb{
-    font-weight: bold;
-    font-size: large;
-    text-align: left;
+    text-align: right;
     position: sticky; /* Diventa "appiccicoso" */
     top: 0;           /* Si attacca all'alto */
     background-color: var(--backgroundcolor);
     padding: 0.5em;
     z-index: 100;
-    justify-content: center;
+
     display: flex;
     align-items: center;    /* Centra verticalmente testo e immagine */
-    gap: 15px;
-}
+    justify-content: space-between;
+    padding: 0.5em 1em;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);; /*bordino ombrato*/
+    margin-left: 0.9em;
+    margin-right: 0.9em;
 
+    /*voglio che si nasconda quando salgo*/
+}
 .breadcrumbG{
     height: 2em;  /* Altezza relativa alla dimensione del testo (così si adatta) */
     width: auto;    /* Mantiene le proporzioni */
+    
+}
+#menu{
+    display: flex;
+    gap:20px;
+    
+}
+#breadcrumb a:visited{
+    color: var(--txtcolor);
+}
+#breadcrumb a:link{
+    color: var(--txtcolor);
 }
 
+
 /*header styles*/
-header{
+#index{
     padding: 0em 0em;
     margin: 0em;
     background-image: url("../images/sfondo.svg");
-    background-size: cover;
-    background-position: top center;
+    background-size: auto 60%;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100vh;
+
     overflow: hidden;
 }
+#index img{
+    position: absolute;
+    width: 19em;
+
+    will-change: transform;
+}
+.scorre_giu{
+    top: 3em;
+    right: 1em;
+    max-width: 17em;
+
+}
+.scorre_su{
+    bottom: -20px;
+    left:0px;
+}
+
 
 /*main content*/
 main{
     background-color: var(--txtcolor);
     color: var(--backgroundcolor);
     margin-left: 1em;
-    margin-right: 1;
-    padding-bottom: 2em;
+    margin-right: 1em;
+    padding-bottom: 5em;
 }
 main h1{
     text-align: center;
@@ -87,7 +122,6 @@ main h1{
 }
 main h2{
     text-align: center;
-    margin-top: 1.5em;
     padding-top: 1em;
     margin-bottom: 1em;
     font-size: 2em;
@@ -97,17 +131,17 @@ main p{
     line-height: 2em;
     margin-left: 10em;
     margin-right: 10em;
-    padding-bottom: 1em;
-    padding-top: 1em;
+    padding-top: 3em;
+    padding-bottom: 3em;
     padding-left: 1em;
     padding-right: 1em;
     border-radius: 1em;
 }
 main a:visited{
-    color: var(--vislinkonblack);
+    color: var(--txtcolor);
 }
 main a:link{
-    color: var(--linkcoloronblack);
+    color: var(--txtcolor);
 }
 
 /*content inside main*/
@@ -148,8 +182,10 @@ main a:link{
     display: grid;
     grid-template-columns: 1fr 1fr;/* due colonne uguali */
     grid-auto-rows: 50vh;/* Ogni riga è alta metà schermo (50% della Viewport Height) */
-    width: 100%;
-    gap: 2px;
+    padding: 2em;
+    gap: 1em;
+    max-width: 1400px;
+    margin: 0 auto;
     background-color: var(--txtcolor);
 }
 .grid_card{
@@ -159,14 +195,13 @@ main a:link{
     align-items: flex-end;
     color: var(--backgroundcolor);
 }
-.grid_card img {
+.grid_card img{
     position: absolute;
     top: 0; left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: 1;
-    /*transition: transform 0.6s ease;*/
 }
 .card_content{
     position: relative;
@@ -177,14 +212,23 @@ main a:link{
 
 /*separatore G*/
 .g_separatore {
-    height: 5.5em; 
+    height: 3em; 
     width: auto;
     background-image: url('../images/G.jpg');
     background-repeat: repeat-x; /*ripete solo orizzontalmente */
     background-position: center; /* Centra le G verticalmente nel div */
-    background-size: auto 100%;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    background-size: auto 130%;
+    margin-top: 5em;
+    margin-bottom: 5em;
+
+    /*forzare l'uscita del padding del main e toccare sx e dx*/
+    margin-left: -1em; 
+    margin-right: -1em;
+    width: auto;
+
+    /*aggiungo un piccolo border*/
+    border-top: 2px solid var(--txtcolor);
+    border-bottom: 2px solid var(--txtcolor);
 }
 
 .gallery{
@@ -216,21 +260,19 @@ footer p {
     color: var(--txtcolor);
 }
 
-.backtotop{
+#backtotop{
     position: fixed;
     bottom: 15px;
     right: 20px;
-    z-index: 100;
+    z-index: 1000;
 
     /*stile del pulsante*/
     background-color: var(--backgroundcolor);
     background-image: url('../images/arrow,.png');
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center ;
     background-size: 50%; /* Fai l'icona un po' più piccola del pulsante */
-
-    /* 3. Stile del pulsante (es. tondo) */
-    border-radius: 50%; /* Lo fa tondo */
+    border-radius: 50%;
     border: 2px solid var(--txtcolor);
 
     /* Sposta il testo fuori dallo schermo, ma lo lascia leggibile per gli screen reader */
@@ -239,4 +281,15 @@ footer p {
 
     width: 3em;
     height: 3em;
+
+    /* STATO INIZIALE: NASCOSTO */
+    opacity: 0;
+    visibility: hidden; 
+    /* Transizione morbida */
+    transition: all 0.3s ease;
+}
+/* STATO VISIBILE (JS aggiungerà questa classe) */
+#backtotop.show {
+    opacity: 1;
+    visibility: visible;
 }

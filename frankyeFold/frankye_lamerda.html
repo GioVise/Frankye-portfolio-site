@@ -17,24 +17,18 @@
 </head>
 
 <body id="frankye">
-    <header>
-        <nav id="menu">
-            <!--
-            <ul>
-                <li><a href="../index.html" lang="en">Home</a></li>
-                <li><a href="../progetti_scolastici.html">Progetti scolastici</a></li>
-                <li><a href="../progetti_personali.html">Progetti personali</a></li>
-                <li id="currentLink">Frankye LaMerda</a></li>
-                <li><a href="../contatti.html#content">Contatti</a></li>
-            </ul>
-            -->
-        </nav>
+    <header id="index">
+        <img src="images/velvet.png" alt="disegno" class="scorre_giu">
+        <img src="images/immagine2.png" alt="disegno vecchio logo" class="scorre_su">
     </header>
 
     <nav id="breadcrumb">
-        <img src="../images/G.svg" alt="G" class="breadcrumbG" />
-        Frankye LaMerda
-        <img src="../images/G.svg" alt="G" class="breadcrumbG" />
+        <img src="../images/G.svg" alt="Logo" class="breadcrumbG" />
+        <div id="menu">
+            <a href="gallery.html">Galleria</a>
+            <a href="gallery.html">Avvento</a>
+            <a href="gallery.html">Contatti</a>
+        </div>
     </nav>
 
     <main>
@@ -50,7 +44,7 @@
 
         <section class="griglia_elementi">
             <a href="gallery.html" class="grid_card">
-                <img src="images/pene.png" alt="sfondo galleria">
+                <img src="images/pene.svg" alt="sfondo galleria">
                 <div class="card_content">
                     <span class="subtitle">Pure, artificiale</span>
                     <h3>GALLERY</h3>
@@ -66,14 +60,14 @@
                 </div>
             </a>
             <a href="musica.html" class="grid_card">
-                <img src="images/capas.png" alt="sfondo musica">
+                <img src="images/capas.svg" alt="sfondo musica">
                 <div class="card_content">
                     <span class="subtitle">Amo le donne che sanno di merluzzo</span>
                     <h3 lang="en">MUSIC</h3>
                     <span class="cta">e le tette</span>
                 </div>
             </a><a href="contatti.html" class="grid_card">
-                <img src="images/contattiPR.jpg" alt="sfondo contatti">
+                <img src="images/pecure.png" alt="sfondo contatti">
                 <div class="card_content">
                     <span class="subtitle">Mi cerchi?</span>
                     <h3>CONTATTI</h3>
@@ -81,36 +75,100 @@
                 </div>
             </a>
         </section>
-    <!--
-        <h2 lang="en">Gallery</h1>
-        
-        <div class="presentazione sezione">
-            <p lang="it">
-                Mi fa piacere vedervi qui, riuniti in questo museo di opere poco opere e soprattutto poco utili per la vostra crescita personale. vi auguro il meglio, a voi miei fratelli, fatemi sapere quali vi garbano di più di altre, commentatele per dirmi quali invece vi fanno più che vomitare.
-            </p>
-            <img src="images/gallery.svg" alt="immagine per pagina dedicata a immagini e disegni">
-        </div>
-
-        <h2>Avvento</h2>
 
         <div class="g_separatore"></div>
 
-        <h1>"Chi se ne frega della musica?"</h1>
-        <p>Frankye ama la musica. Frankye prova a condividere il suo amore verso l'arte postando periodicamente contenuti sul suo blog (<a href="https://www.instagram.com/frankye.lamerda/">Instagram</a>) nozioni e informazioni del mondo sonoro/musicale.<br>Qua comunque idealmente tempo di fare javascript e metterei un calendario che mostra i prossimi eventi, come compleanni e anniversari di album musicali, canzoni, persone morte e persone vive.</p>
-
-        <div class="g_separatore"></div>
-
-        <h1>Where do find me?</h1>
-        <p id="insta">Spassionatamente chiedo e consiglio di guardare e dare un'occhiata al profilo Instagram di Frankye, che non ha caricato giornalmente l'avvento ma periodicamente aggiorna il mondo del ciò che lui fa.<br><a href="https://www.instagram.com/frankye.lamerda/">Frankye's Instagram</a></p>
-    -->
+        <section>
+            <p>nemmeno un footer</p>
+        </section>
     </main>
 
     <footer>
         <section id="totop">
-            <a href="#frankye" class="backtotop">back to top</a>
+            <a href="#content" id="backtotop">back to top</a>
         </section>
         <p>Portfolio di Giovanni Visentin - &copy; 2025</p>
     </footer>
+
+
+
+
+
+    <!--parte JS in LAVORAZIONE-->
+
+
+    <script>
+    // ==========================================
+    // FASE 1: SELEZIONE (Chi sono gli attori?)
+    // ==========================================
+    
+    // Il pulsante che deve apparire
+    const btnTop = document.getElementById("backtotop");
+    
+    // Il punto di riferimento (la sezione content)
+    const contentSection = document.querySelector(".content");
+    
+    // Le due immagini dell'header da muovere
+    const imgSx = document.querySelector(".scorre_su");
+    const imgDx = document.querySelector(".scorre_giu");
+
+
+    // ==========================================
+    // FASE 2: ASCOLTO (Cosa stiamo aspettando?)
+    // ==========================================
+    
+    // "window" è la finestra del browser.
+    // "addEventListener" è come dire: "Stai attento a questo evento..."
+    // L'evento è 'scroll'.
+    
+    window.addEventListener("scroll", function() {
+        
+        // ==========================================
+        // FASE 3: AZIONE (Logica matematica)
+        // ==========================================
+
+        // 1. Capiamo dove siamo (quanti pixel abbiamo scrollato dall'alto)
+        let pixelScrollati = window.scrollY;
+
+        // --- LOGICA PULSANTE TO-TOP ---
+        
+        // Calcoliamo a che pixel inizia la sezione content
+        // .offsetTop ci dice la distanza dell'elemento dalla cima della pagina
+        let puntoDiAttivazione = contentSection.offsetTop;
+
+        // Se abbiamo scrollato PIÙ del punto di inizio del content...
+        if (pixelScrollati > puntoDiAttivazione) {
+            btnTop.classList.add("show"); // Aggiungi la classe CSS
+        } else {
+            btnTop.classList.remove("show"); // Togli la classe CSS
+        }
+
+
+        // --- LOGICA PARALLAX HEADER ---
+
+        // Ottimizzazione: Se abbiamo superato l'header (es. 1000px), 
+        // smettiamo di calcolare il movimento per non sprecare batteria del PC/Telefono
+        if (pixelScrollati < 1000) {
+            
+            // VELOCITÀ: Moltiplichiamo per un numero decimale (es. 0.3)
+            // Se scrollo di 100px, l'immagine si muove di 30px (100 * 0.3).
+            // Più è basso il numero, più è lento l'effetto (più "lontano").
+            let speed = 0.4;
+            let speeddx = 0.5;
+            let rotSpeed = 0.2;
+            let gradiRotazione = pixelScrollati * rotSpeed;
+
+            // Immagine SX (era in basso, deve salire)
+            // Usiamo il meno (-) per andare in su
+            imgSx.style.transform = `translateY(-${pixelScrollati * speed}px) rotate(${gradiRotazione}deg)`;
+
+            // Immagine DX (era in alto, deve scendere)
+            // Usiamo il più (+) (implicito) per andare in giù
+            imgDx.style.transform = `translateY(${pixelScrollati * speeddx}px)`;
+        }
+
+    });
+</script>
 </body>
 
 </html>
