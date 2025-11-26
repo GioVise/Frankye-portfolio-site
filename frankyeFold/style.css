@@ -25,7 +25,14 @@ html{
     margin: auto;
 }
 
-/*gesione animazioni*/
+/*---------------------------------------------------------------------------------------------
+===============================================================================================
+-----------------------------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------------------------
+==================================GESTIONE ANIMAZIONI==========================================
+----------------------------------------------------------------------------------------------*/
+
 @media (prefers-reduced-motion: reduce) {
   /* Disattiva tutte le transizioni e animazioni */
   * {
@@ -39,7 +46,11 @@ html{
   }
 }
 
-/*breadcrumb styles*/
+
+/*---------------------------------------------------------------------------------------------
+============================================Breadcrumb=========================================
+----------------------------------------------------------------------------------------------*/
+
 #breadcrumb{
     text-align: right;
     position: sticky; /* Diventa "appiccicoso" */
@@ -58,15 +69,23 @@ html{
 
     /*voglio che si nasconda quando salgo*/
 }
+#br_c{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+#br_dx{
+    display: flex;
+    gap: 1.5em;
+    align-items: center;
+}
 .breadcrumbG{
-    height: 2em;  /* Altezza relativa alla dimensione del testo (così si adatta) */
-    width: auto;    /* Mantiene le proporzioni */
-    
+    height: 2em;
+    width: auto;
 }
 #menu{
     display: flex;
     gap:20px;
-    
 }
 #breadcrumb a:visited{
     color: var(--txtcolor);
@@ -76,7 +95,9 @@ html{
 }
 
 
-/*header styles*/
+/*---------------------------------------------------------------------------------------------
+============================================Header============================================
+----------------------------------------------------------------------------------------------*/
 #index{
     padding: 0em 0em;
     margin: 0em;
@@ -106,7 +127,9 @@ html{
 }
 
 
-/*main content*/
+/*---------------------------------------------------------------------------------------------
+============================================MAIN===============================================
+----------------------------------------------------------------------------------------------*/
 main{
     background-color: var(--txtcolor);
     color: var(--backgroundcolor);
@@ -131,34 +154,34 @@ main p{
     line-height: 2em;
     margin-left: 10em;
     margin-right: 10em;
-    padding-top: 3em;
     padding-bottom: 3em;
     padding-left: 1em;
     padding-right: 1em;
     border-radius: 1em;
 }
 main a:visited{
-    color: var(--txtcolor);
+    color: var(--backgroundcolor);
 }
 main a:link{
-    color: var(--txtcolor);
+    color: var(--backgroundcolor);
 }
 
-/*content inside main*/
+/*---------------------------------------------------------------------------------------------
+============================================Content============================================
+----------------------------------------------------------------------------------------------*/
 .content{
-    height: 80vh;
-    scroll-margin-top: 5em; /*spazio tra inizio sezione e breadcrumb*/
-}
-.content ul{
-    list-style-type: none;
-    text-align: center;
+    min-height: 80vh;
+    scroll-margin-top: 3em; /*spazio tra inizio sezione e breadcrumb*/
 }
 
-/*presentazione section*/
+/*---------------------------------------------------------------------------------------------
+==========================================Presentazione=========================================
+----------------------------------------------------------------------------------------------*/
 .presentazione{
     display: flex;
     align-items: center;
     gap: 2em;
+    flex-wrap: wrap;
 }
 .presentazione img{
     width: 12em;
@@ -166,18 +189,25 @@ main a:link{
     border-radius: 1em;
     margin-left: 10em;
     margin-right: 2em;
-    margin-top: 2em;
 }
 .presentazione p{
     color: var(--txtcolor);
     background-color: var(--backgroundcolor);
     margin-left: 0em;
     margin-right: 10em;
-    margin-top: 2em;
+    padding-top: 2em;
     flex: 1;
     text-align: center;
 }
 
+.pr_musica p{
+    margin-left: 10em;
+}
+
+
+/*---------------------------------------------------------------------------------------------
+============================================Griglia El=========================================
+----------------------------------------------------------------------------------------------*/
 .griglia_elementi{
     display: grid;
     grid-template-columns: 1fr 1fr;/* due colonne uguali */
@@ -208,9 +238,140 @@ main a:link{
     z-index: 3;
     text-align: center;
     text-transform: uppercase;
+     color: #4A403E;
 }
 
-/*separatore G*/
+
+/*---------------------------------------------------------------------------------------------
+============================================Avvento===========================================
+----------------------------------------------------------------------------------------------*/
+#avvento-tree {
+    display: flex;
+    flex-direction: column; /* impila le righe*/
+    align-items: center;    /* Centra tutto l'albero nella pagina */
+    padding: 4em 1em;
+    background-color: var(--txtcolor);
+}
+.tree-row {
+    display: flex;
+    justify-content: center; /* Centra gli elementi nella riga */
+    flex-wrap: wrap;/*Se lo schermo è piccolo, vai a capo senza rompere tutto */
+    gap: 1.5em;
+    margin-bottom: 1em;/*Spazio tra i piani*/
+    width: 100%;
+}
+.advent-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    
+    /* Ombra leggera per staccarle dallo sfondo */
+    filter: drop-shadow(0 5px 5px rgba(255, 255, 255, 0.3));
+}
+.star img {
+    width: 120px;
+    height: 120px;
+    filter: drop-shadow(0 0 15px gold); /* Alone luminoso */
+    z-index: 5;
+}
+.trunk img {
+    width: 90px;
+    height: 90px;
+    transform: none !important;
+}
+.ground-row {
+    width: 100%;
+    border-top: 2px dashed var(--backgroundcolor); /* Opzionale: linea dell'orizzonte */
+    padding-top: 2em;
+}
+.ground img {
+    width: 100px;
+    height: 100px;
+    height: auto;
+    transform: none !important;
+}
+
+/*---------------------------------------------------------------------------------------------
+============================================Overlay=========================================
+----------------------------------------------------------------------------------------------*/
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Molto scuro */
+    z-index: 9999; /* Sopra a tutto il resto */
+    
+    display: none; /* Nascosto di default */
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out; /* Dice all'utente che cliccando esce */
+}
+
+/* L'immagine zoomata */
+.lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    cursor: default;
+}
+/* Classe per mostrare la lightbox */
+.lightbox-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/*---------------------------------------------------------------------------------------------
+============================================Contatti===========================================
+----------------------------------------------------------------------------------------------*/
+.contact_layout{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin-top: 2em;
+    margin-left: 5em;
+}
+.laterale_sx, .laterale_dx{
+    flex: 1;
+    min-width: 300px;
+}
+.laterale_dx {
+    text-align: center;
+}
+/* Se vuoi i link belli spaziati */
+.laterale_dx ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+.laterale_dx li {
+    margin-bottom: 1em;
+}
+
+/* --- GESTIONE MOBILE --- */
+@media (max-width: 768px) {
+    .contact_layout {
+        text-align: center; /* Su mobile centriamo tutto */
+    }
+    .laterale_dx, .laterale_dx ul {
+        text-align: center !important; /* Anche i link tornano al centro */
+    }
+}
+
+
+
+/*---------------------------------------------------------------------------------------------
+============================================Separatore=========================================
+----------------------------------------------------------------------------------------------*/
 .g_separatore {
     height: 3em; 
     width: auto;
@@ -231,6 +392,10 @@ main a:link{
     border-bottom: 2px solid var(--txtcolor);
 }
 
+
+/*---------------------------------------------------------------------------------------------
+============================================Gallery=========================================
+----------------------------------------------------------------------------------------------*/
 .gallery{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -249,7 +414,9 @@ main a:link{
 }
 
 
-/*footer*/
+/*---------------------------------------------------------------------------------------------
+============================================Footer=============================================
+----------------------------------------------------------------------------------------------*/
 footer p {
     text-align: center;
     font-style: italic;
@@ -292,4 +459,50 @@ footer p {
 #backtotop.show {
     opacity: 1;
     visibility: visible;
+}
+
+
+
+
+
+
+/* ========================================= */
+/* VERSIONE MOBILE (Sotto i 768px)     */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    /* 1. Nascondi il titolo centrale assoluto che darebbe fastidio */
+    #br_c {
+        display: none; 
+    }
+
+    /* 2. Riduci un po' il padding della barra */
+    #breadcrumb {
+        padding: 0.5em; 
+        justify-content: space-between; /* Mantiene logo a sx e link a dx */
+    }
+
+    /* 3. Riduci la dimensione del testo dei link se serve */
+    #br_dx {
+        gap: 1em; /* Avvicina un po' i link */
+        font-size: 0.9em; /* Testo leggermente più piccolo */
+    }
+
+    /*------------------------------------------------------*/
+    /*======================avvento=========================*/
+    /*------------------------------------------------------*/
+    .advent-item img {
+        width: 70px;  /* Invece di 100px */
+        height: 70px;
+    }
+    
+    /* Riduciamo lo spazio tra le palline */
+    .tree-row {
+        gap: 0.5em;
+    }
+
+    /* La stella e il tronco si adattano */
+    .star img { width: 100px; height: 100px; }
+    .trunk img { width: 50px; height: 80px; }
 }
