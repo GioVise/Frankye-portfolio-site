@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <title>Portfolio</title>
+    <link rel="icon" type="image/g" href="../images/G.jpg">
+    <meta charset="utf-8">
+    <meta name="description" content="Pagina dedicata ai progetti scolastici e personali di Giovanni Visentin">
+    <meta name="keywords" content="portfolio, Giovanni Visentin, Frankye LaMerda, progetti, videogiochi, disegni">
+    <meta name="author" content="giovann">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--fonts and colors-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body id="frankye">
+    <header id="galleria">
+    </header>
+
+    <nav id="breadcrumb">
+        <a href="frankye_lamerda.html">
+            <img src="../images/G.svg" alt="Logo" class="breadcrumbG" />
+        </a>
+        <div id="br_c">
+            Galleria
+        </div>
+        <div id="br_dx">
+            <a href="avvento.html">Avvento</a>
+            <a href="contatti.html">Contatti</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="content">
+            <h1 lang="en">Gallery</h1>
+
+            <h2>Disegni vari</h2>
+            <section class="gallery">
+                <figure class="item">
+                    <img src="images/squerez.png" alt="squerez" />
+                    <figcaption>squerez</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/angel.png" alt="angel" />
+                    <figcaption>angel</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/gamba.png" alt="gamba" />
+                    <figcaption>gamba</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/picchia.png" alt="picchia" />
+                    <figcaption>picchia</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/hitman.png" alt="hitman" />
+                    <figcaption>hitman</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/inferno.png" alt="inferno" />
+                    <figcaption>inferno</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/pecure.png" alt="pecure" />
+                    <figcaption>pecure</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/modigliani.png" alt="modigliani" />
+                    <figcaption>modigliani</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/Sciarpa.png" alt="sciarpa" />
+                    <figcaption>sciarpa</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/8marz.png" alt="8 marzo" />
+                    <figcaption>8 marzo</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/19-03.png" alt="19-03" />
+                    <figcaption>19 marzo</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/25aprile.png" alt="25 aprile" />
+                    <figcaption>25 aprile, riferimento a 'Porco Rosso', film di Hayao Miyazaki, basato sul manga di Hikōtei jidai. fanculo ai fascisti.</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/adio.png" alt="adio" />
+                    <figcaption>radio, X = x</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/adolf e stalin.png" alt="adolf e stalin" />
+                    <figcaption>adolf e stalin, in giro in macchina.</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/albero.png" alt="albero" />
+                    <figcaption>un albero.</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/canemano.png" alt="canemano" />
+                    <figcaption>canemano: un cane, una mano.</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/mostr.png" alt="mostro" />
+                    <figcaption>un mostro, brutto.</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/mostro tette.png" alt="mostro tette" />
+                    <figcaption>mostro e tette, facile da capire.</figcaption>
+                </figure>
+        </section>
+    </main>
+
+    <footer>
+        <section id="totop">
+            <a href="#content" id="backtotop">back to top</a>
+        </section>
+        <p>Portfolio di Giovanni Visentin - &copy; 2025</p>
+    </footer>
+
+    <div id="gallery-lightbox" class="lightbox-overlay">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="" alt="Zoom">
+        <p id="lightbox-caption"></p>
+    </div>
+
+
+    <!--PARTE JS-->
+
+    <script>
+        // 1. Selezioniamo gli elementi
+        const galleryItems = document.querySelectorAll('.gallery .item'); // Le tue figure
+        const lightbox = document.getElementById('gallery-lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.querySelector('.close-btn');
+
+        // 2. Aggiungiamo il click a ogni figura
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Trova l'immagine dentro la figura cliccata
+                const imgInside = this.querySelector('img');
+                // Trova la didascalia (figcaption) dentro la figura cliccata
+                const captionInside = this.querySelector('figcaption');
+
+                // Passa i dati alla Lightbox
+                lightboxImg.src = imgInside.src; // Mette l'immagine
+                lightboxImg.alt = imgInside.alt; // Mette l'alt per accessibilità
+
+                // Se c'è una didascalia, scrivila. Altrimenti usa l'alt.
+                if (captionInside) {
+                    lightboxCaption.textContent = captionInside.textContent;
+                } else {
+                    lightboxCaption.textContent = imgInside.alt;
+                }
+
+                // Mostra la lightbox
+                lightbox.classList.add('active'); // Assicurati di avere la classe .active nel CSS dell'altra volta!
+            });
+        });
+
+        // 3. Logica di chiusura (uguale all'altra volta)
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        // Chiudi con la X
+        if(closeBtn) closeBtn.addEventListener('click', closeLightbox);
+
+        // Chiudi cliccando sullo sfondo nero
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

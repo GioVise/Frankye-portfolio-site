@@ -1,0 +1,76 @@
+------------------------------------------------
+=============== 25/11/19-Lezione ===============
+------------------------------------------------
+
+--> ipovedenti != ciechi (stupidi instagram e alberto angela [non colpevoli intenzionalmente])
+
+------------------------------------------------
+
+non vedono nero, ne bianco. è difficile da spiegare e rappresentare.
+c'è acutezza visiva a.v. (Aa) e campo visivo (. o 0 o .)
+
+------------------------------------------------
+
+Tipi:
+--> Cechi assoluti (non della repubblica)
+    --> non vede nemmeno la prima riga di a.v. 
+    --> hanno il c.v. minore di 3 quindi praticamente vede un puntino. a momenti non si considera
+
+--> Ciechi parziali o ventesimisti
+    --> a.v. minore del ventesimo (meno di un decimo quindi, o no?)
+    --> c.v più ampio, (10 per cento circa)
+    --> vedono, possono anche leggere, e con un ingranditore possono essere molto più autonomi.
+    --> usano bastone o cane guida generalmente.
+    --> non sono falsi ciechi.
+
+--> Ipovedenti
+    --> può essere grave o decimista, medio gravi, lievi.
+    --> non può guidare, a momenti manco la bicicletta.
+    --> siamo, con i lievi, al massimo al 3/10 di a.v. in entrambi gli occhi o nell'occhio migliore.
+    --> c.v. ampio, 40/50/60 per cento.
+
+------------------------------------------------
+
+Screenreader
+--> le voci fanno cagare, microsoft fa cagare, quelle "buone" sono a pagamento, ovviamente.
+--> usiamo luca oggi
+
+------------------------------------------------
+
+la meloni deve sistemare il sito per le timbrature
+(vuoto)
+laurea di informatica in dipartimento di matematica
+(vuoto)
+il governo non sa fare una query a database
+(vuoto)
+
+------------------------------------------------
+
+Cose: Headers
+--> Headers utili, per andare avanti (con h si muovono tra Headers)
+
+Cose: Overlay
+--> salta a: (necessario, molto utile come una delle prime cose)
+--> danno una grande mano agli ipovedenti, ma non ai ciechi.
+--> per i ciechi: tutti i pulsanti etichettati, alt messi bene, header messi giusti, link chiari.
+--> non sempre buoni.
+--> sito notizie, dopo premuto 1 (o H) vuoi già il testo, non i link per facebook o robe cosi (muovendoti con frecce o alt).
+--> anche la pubblicità, dà fastidio (a chi no?)
+
+Cose sensate:
+--> in un elenco, mettere (1/6), (2/6), ... letto forse aiuta i ciechi per capire quante sono le categorie (lo fa in automatico se setuppato bene).
+--> pulsante ESC può servire tipo per fare un salto a un qualcosa sensato.
+--> audio per caricamento pagina, movimento tra schede, e robe capite belle, fatte con javascript, lo faremo, con calma.
+
+------------------------------------------------
+
+Cose importanti per telefono accessibile.
+--> 
+
+
+
+
+------------------------------------------------
+
+(note mie)
+perche si muovono le palpebre?
