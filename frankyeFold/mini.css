@@ -1,0 +1,98 @@
+img {
+    max-width: 100%; /* Non diventare mai più grande del tuo contenitore */
+    height: auto;    /* Mantieni le proporzioni (non schiacciarti) */
+}
+#br_c {
+    display: none; 
+}
+#breadcrumb {
+    padding: 0.5em; 
+    justify-content: space-between; /* Mantiene logo a sx e link a dx */
+}
+
+#br_dx {
+    gap: 1em; /* Avvicina un po' i link */
+    font-size: 0.9em; /* Testo leggermente più piccolo */
+}
+
+/*------------------------------------------------------*/
+/*===============immagini header========================*/
+/*------------------------------------------------------*/
+#index{
+    background-size: auto 50%;
+}
+#index img{
+    max-width: 13em;
+    z-index: -9999;
+    will-change: transform;
+}
+.scorre_giu{
+    top: 3em;
+    right: 1em;
+    max-width: 11em;
+}
+
+/*------------------------------------------------------*/
+/*===================Griglia El=========================*/
+/*------------------------------------------------------*/
+.griglia_elementi{
+    grid-template-columns: 1fr;
+}
+
+/*------------------------------------------------------*/
+/*===================presentazione======================*/
+/*------------------------------------------------------*/
+.presentazione{
+    flex-direction: column;
+    align-items: center;
+}
+.presentazione img{
+    max-width: 7em;
+    margin: 0 0;
+}
+.presentazione p{
+    margin: 0 1em;
+}
+
+/*------------------------------------------------------*/
+/*======================avvento=========================*/
+/*------------------------------------------------------*/
+.advent-item img {
+    width: 70px;  /* Invece di 100px */
+    height: 70px;
+}
+    
+/* Riduciamo lo spazio tra le palline */
+.tree-row {
+    gap: 0.5em;
+}
+
+/* La stella e il tronco si adattano */
+.star img {
+    width: 100px; 
+    height: 100px;
+}
+.trunk img {
+    width: 50px;
+    height: 80px;
+}
+
+/*------------------------------------------------------*/
+/*===================Contatti===========================*/
+/*------------------------------------------------------*/
+.contact_layout {
+    text-align: center; /* Su mobile centriamo tutto */
+}
+.laterale_sx, .laterale_dx ul {
+    text-align: center; /* Anche i link tornano al centro */
+}
+.laterale_dx{
+    margin-top: 1em;
+}
+
+/*------------------------------------------------------*/
+/*===================Contatti===========================*/
+/*------------------------------------------------------*/
+.gallery{
+    margin: 0 1em;
+}

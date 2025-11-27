@@ -18,6 +18,10 @@ html, body{   /*si applica ovunque*/
     line-height: 1.5em;   /*IMPARALO!!!*/
 }
 
+body.no-scroll{
+    overflow: hidden;
+}
+
 html{
     scroll-behavior: smooth;
     background-color: var(--backgroundcolor);
@@ -96,30 +100,52 @@ html{
 
 
 /*---------------------------------------------------------------------------------------------
+============================================Separatore=========================================
+----------------------------------------------------------------------------------------------*/
+.g_separatore {
+    height: 3em; 
+    width: auto;
+    background-image: url('../images/G.jpg');
+    background-repeat: repeat-x; /*ripete solo orizzontalmente */
+    background-position: center; /* Centra le G verticalmente nel div */
+    background-size: auto 130%;
+    margin-top: 5em;
+    margin-bottom: 5em;
+
+    /*forzare l'uscita del padding del main e toccare sx e dx*/
+    margin-left: -1em; 
+    margin-right: -1em;
+    width: auto;
+
+    /*aggiungo un piccolo border*/
+    border-top: 2px solid var(--txtcolor);
+    border-bottom: 2px solid var(--txtcolor);
+}
+
+
+/*---------------------------------------------------------------------------------------------
 ============================================Header============================================
 ----------------------------------------------------------------------------------------------*/
 #index{
     padding: 0em 0em;
     margin: 0em;
-    background-image: url("../images/sfondo.svg");
+    background-image: url("../images/sfondo_svg.svg");
     background-size: auto 60%;
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
-
     overflow: hidden;
 }
 #index img{
     position: absolute;
     width: 19em;
-
+    z-index: -9999;
     will-change: transform;
 }
 .scorre_giu{
     top: 3em;
     right: 1em;
     max-width: 17em;
-
 }
 .scorre_su{
     bottom: -20px;
@@ -135,7 +161,7 @@ main{
     color: var(--backgroundcolor);
     margin-left: 1em;
     margin-right: 1em;
-    padding-bottom: 5em;
+    padding-bottom: 3em;
 }
 main h1{
     text-align: center;
@@ -152,8 +178,8 @@ main h2{
 main p{
     text-align: center;
     line-height: 2em;
-    margin-left: 10em;
-    margin-right: 10em;
+    margin-left: 2em;
+    margin-right: 2em;
     padding-bottom: 3em;
     padding-left: 1em;
     padding-right: 1em;
@@ -162,7 +188,7 @@ main p{
 main a:visited{
     color: var(--backgroundcolor);
 }
-main a:link{
+main a:link{    
     color: var(--backgroundcolor);
 }
 
@@ -180,28 +206,20 @@ main a:link{
 .presentazione{
     display: flex;
     align-items: center;
-    gap: 2em;
     flex-wrap: wrap;
 }
 .presentazione img{
     width: 12em;
     height: auto;
     border-radius: 1em;
-    margin-left: 10em;
-    margin-right: 2em;
+    margin-left: 2em;
 }
 .presentazione p{
     color: var(--txtcolor);
     background-color: var(--backgroundcolor);
-    margin-left: 0em;
-    margin-right: 10em;
     padding-top: 2em;
     flex: 1;
     text-align: center;
-}
-
-.pr_musica p{
-    margin-left: 10em;
 }
 
 
@@ -239,6 +257,45 @@ main a:link{
     text-align: center;
     text-transform: uppercase;
      color: #4A403E;
+}
+
+
+/*---------------------------------------------------------------------------------------------
+============================================Gallery=========================================
+----------------------------------------------------------------------------------------------*/
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5em;      /* Spazio tra le celle */
+    margin: 0 4em;
+    padding-right: 2em;
+    padding-left: 2em;
+}
+.gallery figcaption{
+    font-size: smaller;
+    padding-bottom: 2em;
+    text-align: center;
+}
+.gallery img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.gallery .item{
+    cursor: pointer;
+    transition: transform 0.2 ease;
+}
+.gallery .item:hover{
+    transform: scale(1.02);
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+}
+#lightbox-caption {
+    color: var(--backgroundcolor);
+    margin-left: 1em;
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-family: 'Lexend', sans-serif;
+    text-align: center;
 }
 
 
@@ -284,12 +341,13 @@ main a:link{
     border-top: 2px dashed var(--backgroundcolor); /* Opzionale: linea dell'orizzonte */
     padding-top: 2em;
 }
-.ground img {
+.ground img{
     width: 100px;
     height: 100px;
     height: auto;
     transform: none !important;
 }
+
 
 /*---------------------------------------------------------------------------------------------
 ============================================Overlay=========================================
@@ -300,7 +358,7 @@ main a:link{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9); /* Molto scuro */
+    background: rgba(26, 23, 20, 0.9); /* Molto scuro */
     z-index: 9999; /* Sopra a tutto il resto */
     
     display: none; /* Nascosto di default */
@@ -333,15 +391,10 @@ main a:link{
 .contact_layout{
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 1em;
-    flex-wrap: wrap;
     margin-top: 2em;
-    margin-left: 5em;
 }
 .laterale_sx, .laterale_dx{
     flex: 1;
-    min-width: 300px;
 }
 .laterale_dx {
     text-align: center;
@@ -349,87 +402,12 @@ main a:link{
 /* Se vuoi i link belli spaziati */
 .laterale_dx ul {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
     text-align: center;
 }
 .laterale_dx li {
     margin-bottom: 1em;
 }
 
-/* --- GESTIONE MOBILE --- */
-@media (max-width: 768px) {
-    .contact_layout {
-        text-align: center; /* Su mobile centriamo tutto */
-    }
-    .laterale_dx, .laterale_dx ul {
-        text-align: center !important; /* Anche i link tornano al centro */
-    }
-}
-
-
-
-/*---------------------------------------------------------------------------------------------
-============================================Separatore=========================================
-----------------------------------------------------------------------------------------------*/
-.g_separatore {
-    height: 3em; 
-    width: auto;
-    background-image: url('../images/G.jpg');
-    background-repeat: repeat-x; /*ripete solo orizzontalmente */
-    background-position: center; /* Centra le G verticalmente nel div */
-    background-size: auto 130%;
-    margin-top: 5em;
-    margin-bottom: 5em;
-
-    /*forzare l'uscita del padding del main e toccare sx e dx*/
-    margin-left: -1em; 
-    margin-right: -1em;
-    width: auto;
-
-    /*aggiungo un piccolo border*/
-    border-top: 2px solid var(--txtcolor);
-    border-bottom: 2px solid var(--txtcolor);
-}
-
-
-/*---------------------------------------------------------------------------------------------
-============================================Gallery=========================================
-----------------------------------------------------------------------------------------------*/
-.gallery{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5em;      /* Spazio tra le celle */
-    margin: 0 auto; /* Centra la griglia se c'è spazio extra */
-    padding-right: 2em;
-    padding-left: 2em;
-}
-.gallery figcaption{
-    font-size: smaller;
-    padding-bottom: 2em;
-    text-align: center;
-}
-.gallery img{
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-.gallery .item{
-    cursor: pointer;
-    transition: transform 0.2 ease;
-}
-.gallery .item:hover{
-    transform: scale(1.02);
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-}
-#lightbox-caption {
-    color: var(--backgroundcolor);
-    margin-left: 1em;
-    margin-top: 10px;
-    font-size: 1.2em;
-    font-family: 'Lexend', sans-serif;
-    text-align: center;
-}
 
 /*---------------------------------------------------------------------------------------------
 ============================================Footer=============================================
@@ -472,54 +450,8 @@ footer p {
     /* Transizione morbida */
     transition: all 0.3s ease;
 }
-/* STATO VISIBILE (JS aggiungerà questa classe) */
+
 #backtotop.show {
     opacity: 1;
     visibility: visible;
-}
-
-
-
-
-
-
-/* ========================================= */
-/* VERSIONE MOBILE (Sotto i 768px)     */
-/* ========================================= */
-
-@media (max-width: 768px) {
-
-    /* 1. Nascondi il titolo centrale assoluto che darebbe fastidio */
-    #br_c {
-        display: none; 
-    }
-
-    /* 2. Riduci un po' il padding della barra */
-    #breadcrumb {
-        padding: 0.5em; 
-        justify-content: space-between; /* Mantiene logo a sx e link a dx */
-    }
-
-    /* 3. Riduci la dimensione del testo dei link se serve */
-    #br_dx {
-        gap: 1em; /* Avvicina un po' i link */
-        font-size: 0.9em; /* Testo leggermente più piccolo */
-    }
-
-    /*------------------------------------------------------*/
-    /*======================avvento=========================*/
-    /*------------------------------------------------------*/
-    .advent-item img {
-        width: 70px;  /* Invece di 100px */
-        height: 70px;
-    }
-    
-    /* Riduciamo lo spazio tra le palline */
-    .tree-row {
-        gap: 0.5em;
-    }
-
-    /* La stella e il tronco si adattano */
-    .star img { width: 100px; height: 100px; }
-    .trunk img { width: 50px; height: 80px; }
 }
