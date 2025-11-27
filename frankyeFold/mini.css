@@ -2,8 +2,6 @@ img {
     max-width: 100%; /* Non diventare mai più grande del tuo contenitore */
     height: auto;    /* Mantieni le proporzioni (non schiacciarti) */
 }
-
-
 #br_c {
     display: none; 
 }
@@ -90,4 +88,11 @@ img {
 }
 .laterale_dx{
     margin-top: 1em;
+}
+
+/*------------------------------------------------------*/
+/*===================Contatti===========================*/
+/*------------------------------------------------------*/
+.gallery{
+    margin: 0 1em;
 }

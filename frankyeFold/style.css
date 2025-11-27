@@ -18,6 +18,10 @@ html, body{   /*si applica ovunque*/
     line-height: 1.5em;   /*IMPARALO!!!*/
 }
 
+body.no-scroll{
+    overflow: hidden;
+}
+
 html{
     scroll-behavior: smooth;
     background-color: var(--backgroundcolor);
@@ -92,6 +96,30 @@ html{
 }
 #breadcrumb a:link{
     color: var(--txtcolor);
+}
+
+
+/*---------------------------------------------------------------------------------------------
+============================================Separatore=========================================
+----------------------------------------------------------------------------------------------*/
+.g_separatore {
+    height: 3em; 
+    width: auto;
+    background-image: url('../images/G.jpg');
+    background-repeat: repeat-x; /*ripete solo orizzontalmente */
+    background-position: center; /* Centra le G verticalmente nel div */
+    background-size: auto 130%;
+    margin-top: 5em;
+    margin-bottom: 5em;
+
+    /*forzare l'uscita del padding del main e toccare sx e dx*/
+    margin-left: -1em; 
+    margin-right: -1em;
+    width: auto;
+
+    /*aggiungo un piccolo border*/
+    border-top: 2px solid var(--txtcolor);
+    border-bottom: 2px solid var(--txtcolor);
 }
 
 
@@ -233,6 +261,45 @@ main a:link{
 
 
 /*---------------------------------------------------------------------------------------------
+============================================Gallery=========================================
+----------------------------------------------------------------------------------------------*/
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5em;      /* Spazio tra le celle */
+    margin: 0 4em;
+    padding-right: 2em;
+    padding-left: 2em;
+}
+.gallery figcaption{
+    font-size: smaller;
+    padding-bottom: 2em;
+    text-align: center;
+}
+.gallery img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.gallery .item{
+    cursor: pointer;
+    transition: transform 0.2 ease;
+}
+.gallery .item:hover{
+    transform: scale(1.02);
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+}
+#lightbox-caption {
+    color: var(--backgroundcolor);
+    margin-left: 1em;
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-family: 'Lexend', sans-serif;
+    text-align: center;
+}
+
+
+/*---------------------------------------------------------------------------------------------
 ============================================Avvento===========================================
 ----------------------------------------------------------------------------------------------*/
 #avvento-tree {
@@ -291,7 +358,7 @@ main a:link{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9); /* Molto scuro */
+    background: rgba(26, 23, 20, 0.9); /* Molto scuro */
     z-index: 9999; /* Sopra a tutto il resto */
     
     display: none; /* Nascosto di default */
@@ -343,68 +410,6 @@ main a:link{
 
 
 /*---------------------------------------------------------------------------------------------
-============================================Separatore=========================================
-----------------------------------------------------------------------------------------------*/
-.g_separatore {
-    height: 3em; 
-    width: auto;
-    background-image: url('../images/G.jpg');
-    background-repeat: repeat-x; /*ripete solo orizzontalmente */
-    background-position: center; /* Centra le G verticalmente nel div */
-    background-size: auto 130%;
-    margin-top: 5em;
-    margin-bottom: 5em;
-
-    /*forzare l'uscita del padding del main e toccare sx e dx*/
-    margin-left: -1em; 
-    margin-right: -1em;
-    width: auto;
-
-    /*aggiungo un piccolo border*/
-    border-top: 2px solid var(--txtcolor);
-    border-bottom: 2px solid var(--txtcolor);
-}
-
-
-/*---------------------------------------------------------------------------------------------
-============================================Gallery=========================================
-----------------------------------------------------------------------------------------------*/
-.gallery{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5em;      /* Spazio tra le celle */
-    margin: 0 auto; /* Centra la griglia se c'è spazio extra */
-    padding-right: 2em;
-    padding-left: 2em;
-}
-.gallery figcaption{
-    font-size: smaller;
-    padding-bottom: 2em;
-    text-align: center;
-}
-.gallery img{
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-.gallery .item{
-    cursor: pointer;
-    transition: transform 0.2 ease;
-}
-.gallery .item:hover{
-    transform: scale(1.02);
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-}
-#lightbox-caption {
-    color: var(--backgroundcolor);
-    margin-left: 1em;
-    margin-top: 10px;
-    font-size: 1.2em;
-    font-family: 'Lexend', sans-serif;
-    text-align: center;
-}
-
-/*---------------------------------------------------------------------------------------------
 ============================================Footer=============================================
 ----------------------------------------------------------------------------------------------*/
 footer p {
@@ -445,7 +450,7 @@ footer p {
     /* Transizione morbida */
     transition: all 0.3s ease;
 }
-/* STATO VISIBILE (JS aggiungerà questa classe) */
+
 #backtotop.show {
     opacity: 1;
     visibility: visible;
