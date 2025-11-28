@@ -289,14 +289,6 @@ main a:link{
     transform: scale(1.02);
     filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
 }
-#lightbox-caption {
-    color: var(--backgroundcolor);
-    margin-left: 1em;
-    margin-top: 10px;
-    font-size: 1.2em;
-    font-family: 'Lexend', sans-serif;
-    text-align: center;
-}
 
 
 /*---------------------------------------------------------------------------------------------
@@ -362,6 +354,8 @@ main a:link{
     z-index: 9999; /* Sopra a tutto il resto */
     
     display: none; /* Nascosto di default */
+    flex-direction: column;
+    box-sizing: border-box;
     justify-content: center;
     align-items: center;
     cursor: zoom-out; /* Dice all'utente che cliccando esce */
@@ -370,7 +364,7 @@ main a:link{
 /* L'immagine zoomata */
 .lightbox-overlay img {
     max-width: 90%;
-    max-height: 90%;
+    max-height: 70vh;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(255,255,255,0.2);
     cursor: default;
@@ -379,6 +373,15 @@ main a:link{
 .lightbox-overlay.active {
     display: flex;
     animation: fadeIn 0.3s ease;
+}
+#lightbox-caption {
+    color: var(--backgroundcolor);
+    margin-left: 1em;
+    margin-top: 10px;
+    font-size: 1em;
+    max-height: 20vh;
+    font-family: 'Lexend', sans-serif;
+    text-align: center;
 }
 @keyframes fadeIn {
     from { opacity: 0; }
