@@ -309,6 +309,30 @@ main a:link{
     margin-bottom: 1em;/*Spazio tra i piani*/
     width: 100%;
 }
+.advent-item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+.door{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #615452;
+    color: var(--backgroundcolor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.3em;
+
+    z-index: 3;
+    transition: transform 0.6s ease, opacity 0.5s;
+    transform-origin: left;
+
+}
 .advent-item img {
     width: 100px;
     height: 100px;
@@ -316,29 +340,47 @@ main a:link{
     
     /* Ombra leggera per staccarle dallo sfondo */
     filter: drop-shadow(0 5px 5px rgba(255, 255, 255, 0.3));
+    backface-visibility: hidden;
 }
 .star img {
     width: 120px;
     height: 120px;
-    filter: drop-shadow(0 0 15px gold); /* Alone luminoso */
+    filter: drop-shadow(0 0 15px gold);
     z-index: 5;
 }
 .trunk img {
     width: 90px;
     height: 90px;
-    transform: none !important;
-}
-.ground-row {
-    width: 100%;
-    border-top: 2px dashed var(--backgroundcolor); /* Opzionale: linea dell'orizzonte */
-    padding-top: 2em;
+    transform: none;
 }
 .ground img{
     width: 100px;
     height: 100px;
     height: auto;
-    transform: none !important;
+    transform: none;
 }
+.advent-item:not(.closed) .door {
+    transform: perspective(300px) rotateY(-110deg);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.reset_container{
+    text-align: center;
+}
+#reset-btn{
+    background-color: var(--backgroundcolor);
+    float:right;
+    margin-right: 2em;
+    color: var(--txtcolor);
+    border: 2px solid var(--txtcolor);
+    padding: 0.2em 1em;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
 
 
 /*---------------------------------------------------------------------------------------------

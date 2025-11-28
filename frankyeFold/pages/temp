@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <title>Portfolio</title>
+    <link rel="icon" type="image/g" href="../images/G.jpg">
+    <meta charset="utf-8">
+    <meta name="description" content="Pagina dedicata ai progetti scolastici e personali di Giovanni Visentin">
+    <meta name="keywords" content="portfolio, Giovanni Visentin, Frankye LaMerda, progetti, videogiochi, disegni">
+    <meta name="author" content="giovann">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--fonts and colors-->
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width: 800px)">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body id="frankye">
+    <header>
+    </header>
+
+    <nav id="breadcrumb">
+        <a href="frankye_lamerda.html">
+            <img src="../images/G.svg" alt="Logo" class="breadcrumbG" />
+        </a>
+        <div id="br_c">
+            Avvento
+        </div>
+        <div id="br_dx">
+            <a href="avvento.html">Avvento</a>
+            <a href="gallery.html">Galleria</a>
+            <a href="contatti.html">Contatti</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="content">
+            <h1 lang="it">Avvento</h1>
+            <div class="presentazione pr_avvento">
+                <p>Dove è nato tutto.<br>Questo fu il calendario dell'avvento dell'anno corso 24-25, con molte cose dubbie,
+                molte cose sensibili e insensibili.<br>Se vuoi scaricare la versione stampabile per averlo fisico, bravo,
+                eccolo: (go da farli, aspetta che li faccia please)</p>
+            </div>
+
+        </section>
+
+        <section id="avvento-tree">
+    
+            <div class="tree-row top">
+                <a href="#" class="advent-item star">
+                    <img src="../images/avventoalbero/25.png" alt="Giorno 25">
+                </a>
+            </div>
+
+            <div class="tree-row">
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/1.png" alt="1"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/2.png" alt="2"></a>
+            </div>
+
+            <div class="tree-row">
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/3.png" alt="3"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/4.png" alt="4"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/5.png" alt="5"></a>
+            </div>
+
+            <div class="tree-row">
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/6.png" alt="6"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/7.png" alt="7"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/8.png" alt="8"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/9.png" alt="9"></a>
+            </div>
+
+            <div class="tree-row">
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/10.png" alt="10"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/11.png" alt="11"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/12.png" alt="12"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/13.png" alt="13"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/14.png" alt="14"></a>
+            </div>
+
+            <div class="tree-row">
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/15.png" alt="15"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/16.png" alt="16"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/17.png" alt="17"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/18.png" alt="18"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/19.png" alt="19"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/20.png" alt="20"></a>
+            </div>
+            
+            <div class="tree-row">
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/21.png" alt="21"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/22.png" alt="22"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/23.png" alt="23"></a>
+                <a href="#" class="advent-item"><img src="../images/avventoalbero/24.png" alt="24"></a>
+            </div>
+
+            <div class="tree-row trunk-row">
+                <a href="#" class="advent-item trunk">
+                    <img src="../images/avventoalbero/26.png" alt="Tronco - 26">
+                </a>
+            </div>
+
+            <div class="tree-row ground-row">
+                <a href="#" class="advent-item ground">
+                    <img src="../images/avventoalbero/27.png" alt="Terra - 27">
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+    
+    <footer>
+        <section id="totop">
+            <a href="#content" id="backtotop">back to top</a>
+        </section>
+        <p>Portfolio di Giovanni Visentin - &copy; 2025</p>
+    </footer>
+
+    <div id="advent-lightbox" class="lightbox-overlay">
+        <img id="lightbox-img" src="" alt="Zoom">
+    </div>
+
+    
+
+    <!--PARTE JS-->
+
+    <script>
+    // 1. Seleziona tutti i link dell'albero e la lightbox
+    const treeLinks = document.querySelectorAll('.advent-item');
+    const lightbox = document.getElementById('advent-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    //const closeBtn = document.querySelector('.close-btn');
+    
+        //<span class="close-btn">&times;</span>
+
+    // 2. Aggiungi l'evento click a OGNI casella dell'albero
+    treeLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // PREVIENI IL SALTO: Non seguire il link href="#"
+            e.preventDefault(); 
+            
+            // Trova l'immagine dentro il link cliccato
+            const imgInside = this.querySelector('img');
+            
+            // Copia la src dell'immagine dentro la lightbox
+            lightboxImg.src = imgInside.src;
+            
+            // Mostra la lightbox
+            lightbox.classList.add('active');
+        });
+    });
+
+    // 3. Funzione per chiudere
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+    }
+
+    // Chiudi se clicchi la X
+    //closeBtn.addEventListener('click', closeLightbox);
+
+    // Chiudi se clicchi sullo sfondo nero (ma non sull'immagine)
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+    </script>
+
+</body>
+</html>
