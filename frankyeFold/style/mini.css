@@ -58,23 +58,35 @@ img {
 /*======================avvento=========================*/
 /*------------------------------------------------------*/
 .advent-item img {
-    width: 70px;  /* Invece di 100px */
-    height: 70px;
+    width: 45px;  /* Invece di 100px */
+    height: 45px;
 }
     
 /* Riduciamo lo spazio tra le palline */
 .tree-row {
-    gap: 0.5em;
+    gap: 0.4em;
+    margin-bottom: 5px;
+    flex-wrap: nowrap;
 }
 
 /* La stella e il tronco si adattano */
 .star img {
-    width: 100px; 
-    height: 100px;
+    width: 70px; 
+    height: 70px;
 }
 .trunk img {
     width: 50px;
     height: 80px;
+}
+
+.door{
+    font-size: 1em;
+}
+
+.advent-item:nth-child(odd) img,
+.advent-item:nth-child(even) img {
+    transform: none;
+    margin: 0;
 }
 
 /*------------------------------------------------------*/
