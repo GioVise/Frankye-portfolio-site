@@ -53,6 +53,14 @@ img {
 .presentazione p{
     margin: 0 1em;
 }
+.presentazione{
+    gap: 1em;
+}
+
+.content h1{
+    font-size: 2.5em;
+}
+
 
 /*------------------------------------------------------*/
 /*======================avvento=========================*/
