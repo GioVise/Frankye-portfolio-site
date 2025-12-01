@@ -46,7 +46,7 @@
 
         </section>
 
-        <section id="avvento-tree">
+        <section id="avvento-tree" data-name="avvento_25-26">
 
             <div class="tree-row top">
                 <figure class="advent-item closed star" data-day="25" tabindex="0" role="button" aria-label="Apri la casella del giorno 25">
@@ -207,15 +207,20 @@
 
    <script>
         // 1. SELEZIONE ELEMENTI
+        const treeContainer = document.getElementById('avvento-tree');
         const treeItems = document.querySelectorAll('.advent-item');
         const lightbox = document.getElementById('advent-lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxCaption = document.getElementById('lightbox-caption');
         const closeBtn = document.querySelector('.close-btn');
 
+        const storageKey = treeContainer.getAttribute('data-name') || 'calendario_default';
+
+        console.log("Sto usando la memoria:", storageKey); //   Per debug (F12)
+
         // 2. FUNZIONE: CARICA LA MEMORIA ALL'AVVIO
         function loadOpenedDoors() {
-            const savedDoors = JSON.parse(localStorage.getItem('calendarioAperto')) || [];
+            const savedDoors = JSON.parse(localStorage.getItem(storageKey)) || [];
 
             savedDoors.forEach(day => {
                 // Cerca la casella con quel data-day
@@ -378,7 +383,7 @@
                 if (confirm("Vuoi tu davvero richiudere tutte le caselle? Questa azione non può essere annullata, tristemente.")) {
                     
                     // 2. Cancella la memoria del browser
-                    localStorage.removeItem('calendarioAperto');
+                    localStorage.removeItem(storageKey);
                     
                     // 3. Richiudi visivamente tutte le porte
                     const allItems = document.querySelectorAll('.advent-item');
