@@ -320,14 +320,14 @@
                 element.classList.remove('closed');
                 
                 // Salva in memoria
-                const savedDoors = JSON.parse(localStorage.getItem('calendarioAperto')) || [];
+                const savedDoors = JSON.parse(localStorage.getItem('storageKey')) || [];
 
                 // Ricordati di convertire dayNumber in stringa se l'array salva stringhe
                 const dayString = dayNumber.toString();
                 
                 if (!savedDoors.includes(dayString)) {
                     savedDoors.push(dayString);
-                    localStorage.setItem('calendarioAperto', JSON.stringify(savedDoors));
+                    localStorage.setItem('storageKey', JSON.stringify(savedDoors));
                 }
                 
                 return; 
