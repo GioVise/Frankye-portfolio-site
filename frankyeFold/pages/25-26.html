@@ -240,44 +240,7 @@
         // Esegui subito all'avvio
         loadOpenedDoors();
 
-
-        // 3. FUNZIONE: LOGICA DEL CLICK (Unita e Pulita)
-        /*
-        function handleAdventClick(element) {
-            
-            // A. SE LA CASELLA È CHIUSA -> APRILA E SALVA
-            if (element.classList.contains('closed')) {
-                // 1. Apri visivamente
-                element.classList.remove('closed');
-                
-                // 2. Salva in memoria
-                const dayNumber = element.getAttribute('data-day');
-                const savedDoors = JSON.parse(localStorage.getItem('calendarioAperto')) || [];
-                
-                if (!savedDoors.includes(dayNumber)) {
-                    savedDoors.push(dayNumber);
-                    localStorage.setItem('calendarioAperto', JSON.stringify(savedDoors));
-                }
-                
-                // STOP! Non aprire la lightbox ora.
-                return; 
-            }
-
-            // B. SE È GIÀ APERTA -> APRI LIGHTBOX
-            const img = element.querySelector('img');
-            if (img) {
-                lightboxImg.src = img.src;
-                
-                // Se hai aggiunto il <p id="lightbox-caption"> nella lightbox, usiamo l'alt
-                if(lightboxCaption) {
-                    lightboxCaption.textContent = img.alt;
-                }
-                
-                lightbox.classList.add('active');
-                document.body.classList.add('no-scroll');
-            }
-        }*/
-
+        // 3. FUNZIONE: GESTIONE CLICK SUL CALENDARIO
         function handleAdventClick(element) {
             const dayNumber = parseInt(element.getAttribute('data-day')); 
 
@@ -320,14 +283,14 @@
                 element.classList.remove('closed');
                 
                 // Salva in memoria
-                const savedDoors = JSON.parse(localStorage.getItem('storageKey')) || [];
+                const savedDoors = JSON.parse(localStorage.getItem(storageKey)) || [];
 
                 // Ricordati di convertire dayNumber in stringa se l'array salva stringhe
                 const dayString = dayNumber.toString();
                 
                 if (!savedDoors.includes(dayString)) {
                     savedDoors.push(dayString);
-                    localStorage.setItem('storageKey', JSON.stringify(savedDoors));
+                    localStorage.setItem(storageKey, JSON.stringify(savedDoors));
                 }
                 
                 return; 
