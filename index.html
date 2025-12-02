@@ -1,108 +1,180 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <title>Portfolio</title>
     <link rel="icon" type="image/g" href="images/G.jpg">
     <meta charset="utf-8">
-    <meta name="description" content="Pagina dedicata ai progetti scolastici e personali di Giovanni Visentin" >
-    <meta name="keywords" content="portfolio, Giovanni Visentin, Frankye LaMerda, progetti, videogiochi, disegni" >
+    <meta name="description" content="Pagina dedicata ai progetti scolastici e personali di Giovanni Visentin">
+    <meta name="keywords" content="portfolio, Giovanni Visentin, Frankye LaMerda, progetti, videogiochi, disegni">
     <meta name="author" content="giovann">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--fonts and colors-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/mini.css" media="screen and (max-width: 800px)">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+    <script data-goatcounter="https://frankye.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js">
+    </script>
+    
 </head>
 
-<body id="home"> 
-    <header>
-        
-        <nav id="menu">
-        <ul>
-            <li lang="en" id="currentLink">Home</li>
-            <li><a href="progetti_scolastici.html">Progetti scolastici</a></li>
-            <li><a href="progetti_personali.html">Progetti personali</a></li>
-<!--            <li><a href="frankyeFold/frankye_lamerda.html">Frankye LaMerda (↗️)</a></li> -->
-            <li><a href="contatti.html#content">Contatti</a></li>
-        </ul>
-        <h1>Portfolio</h1>
-        </nav>
+<body id="frankye">
+    <header id="index">
+        <img src="images/velvet.png" alt="disegno" class="scorre_giu">
+        <img src="images/immagine2.png" alt="disegno vecchio logo" class="scorre_su">
     </header>
 
     <nav id="breadcrumb">
-        <img src="images/G.svg" alt="G" class="breadcrumbG"/>
-        Home
-        <img src="images/G.svg" alt="G" class="breadcrumbG"/>
+        <img src="images/G.svg" alt="Logo" class="breadcrumbG" />
+        <div id="menu">
+            <a href="gallery.html">Galleria</a>
+            <a href="musica.html">Musica</a>
+            <a href="contatti.html">Contatti</a>
+        </div>
     </nav>
 
     <main>
         <section id="content" class="content">
-            <h2>Buonasera, come va?</h2>
-            <p>Questo è il mio portfolio personale dove puoi trovare i miei progetti scolastici e personali.<br>
-            Esplora le sezioni per scoprire di più sui miei lavori e interessi!</p>
-        </section>
-
-        <div class="separatore"></div>
-
-        <section class="content">
-            <h2 lang="en">Who am I?</h2>
+            <h1 lang="en">Who am Frankye?</h1>
             <div class="presentazione">
-                <p lang="it">I was born in Bassano del Grappa (VI) on the 19th of August 2004, on a Thursday.<br>I studied at Liceo Brocchi Scientifico opzione Scienze Applicate and now I am studying Computer Science at the University of Padua.<br>Outside of things I am learning and have learnt at Unipd, I know how to use both Unity and Blender, but I have never learnt them in school, so I can't really say I know them perfectly.</p>
+                <img src="images/frankye.jpg" alt="Frankye LaMerda" class="frankye_pic"/>
+                <p lang="it">Frankye è un personaggio, una maschera, un qualcosa.<br>E' un personaggio che ama la musica, ama disegnare, ma senza saperlo fare.<br>Frankye ama le donne che sanno di merluzzo.<br>In quanto giovane, nato da poco, preferisce scherzare che prendere sul serio le cose. <br>Disegna cose anche oscene, ma le nasconde, o almeno ci prova.</p>
             </div>
         </section>
 
-        <section id="pagine">
-            <ul>
-                <li>
-                    <div class="pagina">
-                    <a href="progetti_scolastici.html" class="card-hover-effect">
-                        <img src="images/S.png" alt="Progetti scolastici">
-                    </a>
+        <div class="g_separatore"></div>
+
+        <section class="griglia_elementi">
+            <a href="gallery.html" class="grid_card">
+                <img src="images/copertina_galleria.png" alt="sfondo galleria">
+                <div class="card_content">
+                    <span class="subtitle">Pure, artificiale</span>
+                    <h3>GALLERY</h3>
+                    <span class="cta">scoprimi</span>
                 </div>
-                </li>
-                <li>
-                    <div class="pagina">
-                        <a href="progetti_personali.html" class="card-hover-effect">
-                            <img src="images/P.png" alt="Progetti personali">
-                        </a>
-                    </div>
-                </li>
-                <!--<li>
-                <a href="frankyeFold/frankye_lamerda.html">
-                    <img src="images/F.png" alt="Frankye LaMerda">
-                </a>
-                </li>-->
-                <li>
-                    <div class="pagina">
-                        <a href="contatti.html" class="card-hover-effect">
-                            <img src="images/C.png" alt="Contatti">
-                        </a>
-                    </div>
-                </li>
-            </ul>
+            </a>
+            <a href="avvento.html" class="grid_card">
+                <img src="images/26.svg" alt="sfondo avvento">
+                <div class="card_content">
+                    <span class="subtitle" lang="en">Starting point</span>
+                    <h3>AVVENTO</h3>
+                    <span class="cta">e buon natale</span>
+                </div>
+            </a>
+            <a href="musica.html" class="grid_card">
+                <img src="images/capas.svg" alt="sfondo musica">
+                <div class="card_content">
+                    <span class="subtitle">Amo le donne che sanno di merluzzo</span>
+                    <h3 lang="en">"MUSIC"</h3>
+                    <span class="cta">(e le tette)</span>
+                </div>
+            </a><a href="contatti.html" class="grid_card">
+                <img src="images/copertina_contatti.png" alt="sfondo contatti">
+                <div class="card_content">
+                    <span class="subtitle">Mi cerchi?</span>
+                    <h3>CONTATTAMI</h3>
+                    <span class="cta">ed eccomi qua</span>
+                </div>
+            </a>
         </section>
 
-        <div class="separatore"></div>
+        <div class="g_separatore"></div>
 
-        <section class="content">
-            <h2>Frankye's case</h2>
-            <div class="presentazione presentazione_frankye">
-                <p lang="it">Frankye è un personaggio, un mostro, una maschera, un animale carnale.<br>E' un personaggio, una persona, un qualcosa che ama la musica, ama disegnare, ma senza saperlo fare.<br>Vuoi fargli visita? Ecco il suo sito!</p>
-                <a href="frankyeFold/pages/frankye_lamerda.html" class="card-hover-effect">
-                    <img src="images/F.png" alt="Frankye LaMerda">
-                </a>
-            </div>
+        <section>
+            <p>nemmeno un footer</p>
         </section>
-        
     </main>
 
-    <footer><!--
+    <footer>
         <section id="totop">
-            <a href="#home" class="backtotop"></a>
-        </section>-->
-        <p>Portfolio di Giovanni Visentin - &copy; 2025</p>
+            <a href="#content" id="backtotop">back to top</a>
+        </section>
+        <p>Portfolio di Frankye LaMerda - &copy; 2025</p>
     </footer>
+
+
+
+    <!--parte JS in LAVORAZIONE-->
+
+
+    <script>
+    // ==========================================
+    // FASE 1: SELEZIONE (Chi sono gli attori?)
+    // ==========================================
+    
+    // Il pulsante che deve apparire
+    const btnTop = document.getElementById("backtotop");
+    
+    // Il punto di riferimento (la sezione content)
+    const contentSection = document.querySelector(".content");
+    
+    // Le due immagini dell'header da muovere
+    const imgSx = document.querySelector(".scorre_su");
+    const imgDx = document.querySelector(".scorre_giu");
+
+
+    // ==========================================
+    // FASE 2: ASCOLTO (Cosa stiamo aspettando?)
+    // ==========================================
+    
+    // "window" è la finestra del browser.
+    // "addEventListener" è come dire: "Stai attento a questo evento..."
+    // L'evento è 'scroll'.
+    
+    window.addEventListener("scroll", function() {
+        
+        // ==========================================
+        // FASE 3: AZIONE (Logica matematica)
+        // ==========================================
+
+        // 1. Capiamo dove siamo (quanti pixel abbiamo scrollato dall'alto)
+        let pixelScrollati = window.scrollY;
+
+        // --- LOGICA PULSANTE TO-TOP ---
+        
+        // Calcoliamo a che pixel inizia la sezione content
+        // .offsetTop ci dice la distanza dell'elemento dalla cima della pagina
+        let puntoDiAttivazione = contentSection.offsetTop;
+
+        // Se abbiamo scrollato PIÙ del punto di inizio del content...
+        if (pixelScrollati > puntoDiAttivazione) {
+            btnTop.classList.add("show"); // Aggiungi la classe CSS
+        } else {
+            btnTop.classList.remove("show"); // Togli la classe CSS
+        }
+
+
+        // --- LOGICA PARALLAX HEADER ---
+
+        // Ottimizzazione: Se abbiamo superato l'header (es. 1000px), 
+        // smettiamo di calcolare il movimento per non sprecare batteria del PC/Telefono
+        if (pixelScrollati < 1000) {
+            
+            // VELOCITÀ: Moltiplichiamo per un numero decimale (es. 0.3)
+            // Se scrollo di 100px, l'immagine si muove di 30px (100 * 0.3).
+            // Più è basso il numero, più è lento l'effetto (più "lontano").
+            let speed = 0.4;
+            let speeddx = 0.5;
+            let rotSpeed = 0.2;
+            let gradiRotazione = pixelScrollati * rotSpeed;
+
+            // Immagine SX (era in basso, deve salire)
+            // Usiamo il meno (-) per andare in su
+            imgSx.style.transform = `translateY(-${pixelScrollati * speed}px) rotate(${gradiRotazione}deg)`;
+
+            // Immagine DX (era in alto, deve scendere)
+            // Usiamo il più (+) (implicito) per andare in giù
+            imgDx.style.transform = `translateY(${pixelScrollati * speeddx}px)`;
+        }
+
+    });
+</script>
 </body>
 
 </html>

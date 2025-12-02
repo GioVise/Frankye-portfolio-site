@@ -3,7 +3,7 @@
 
 <head>
     <title>Portfolio</title>
-    <link rel="icon" type="image/g" href="../images/G.jpg">
+    <link rel="icon" type="image/g" href="images/G.jpg">
     <meta charset="utf-8">
     <meta name="description" content="Pagina dedicata ai progetti scolastici e personali di Giovanni Visentin">
     <meta name="keywords" content="portfolio, Giovanni Visentin, Frankye LaMerda, progetti, videogiochi, disegni">
@@ -11,8 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--fonts and colors-->
-    <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width: 800px)">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/mini.css" media="screen and (max-width: 800px)">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,8 +30,8 @@
         </nav>
     </header>
 
-    <nav id="breadcrumb"><a href="frankye_lamerda.html">
-            <img src="../images/G.svg" alt="Logo" class="breadcrumbG" />
+    <nav id="breadcrumb"><a href="index.html">
+            <img src="images/G.svg" alt="Logo" class="breadcrumbG" />
         </a>
         <div id="br_c">
             Musica
@@ -79,7 +79,7 @@
         let musicEvents = []; // Variabile per salvarsi i dati
 
         // 1. CARICA I DATI
-        fetch('../json/music_history.json')
+        fetch('json/music_history.json')
             .then(response => response.json())
             .then(data => {
                 musicEvents = data; // Salviamo i dati per usarli anche nel download
