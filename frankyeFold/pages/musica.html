@@ -48,7 +48,17 @@
             <section class="presentazione pr_musica">
                 <p>Frankye è sempre stato un uomo di cultura, specialmente e solitamente musicale.<br>
                 Tra rock, <span lang="en">grunge</span>, musica italiana e altro. il Dio cd è sempre nel suo cuore, come le donne che sanno di merluzzo (e come le tette). <br>
-                Appena riesco, metto un calendario con gli eventi che nel mondo della muscia sono importanti, che il signor Frankye mi ha aiutato a fare, con tanta fatica e con tanta wikipedia.</p>
+                Appena riesco, metto un calendario con gli eventi che nel mondo della muscia sono importanti, che il signor Frankye mi ha aiutato a fare, con tanta fatica e con tanta wikipedia.<br>Il signor Gemini mi ha aiutato a portarlo in formato json, era fatica riscrivere tutto...</p>
+            </section>
+
+            <section id="music_timeline">
+                <!-- Timeline content will be dynamically loaded here -->
+                <div class="history-header">
+                    <h2>La shtoria</h2>
+                    <button id="download-ics-btn" class="btn-download" alt="Scarica il file ICS con gli eventi musicali per calendario personale">📆</button>
+                </div>
+                <div class="history-grid" id="history-container"></div>
+
             </section>
         </section>
     </main>
@@ -59,5 +69,184 @@
         </section>
         <p>Portfolio di Frankye LaMerda - &copy; 2025</p>
     </footer>
+
+    <!--sezione jS-->
+    <script>
+    const historyContainer = document.getElementById('history-container');
+    const downloadBtn = document.getElementById('download-ics-btn');
+
+    if (historyContainer) {
+        let musicEvents = []; // Variabile per salvarsi i dati
+
+        // 1. CARICA I DATI
+        fetch('../json/music_history.json')
+            .then(response => response.json())
+            .then(data => {
+                musicEvents = data; // Salviamo i dati per usarli anche nel download
+                renderHistoryCards(data); // Disegna le card a schermo
+            })
+            .catch(error => console.error('Errore JSON:', error));
+
+        // 2. FUNZIONE PER DISEGNARE LE CARD (HTML)
+        function renderHistoryCards(events) {
+            events.forEach(evento => {
+                // Trasformiamo "1980-12-08" in pezzi usabili
+                // split('-') crea un array: ["1980", "12", "08"]
+                const dateParts = evento.date.split('-'); 
+                const year = dateParts[0];
+                const monthNum = dateParts[1];
+                const day = dateParts[2];
+
+                // Mappa per trasformare "12" in "DIC"
+                const monthsMap = {
+                    "01": "GEN", "02": "FEB", "03": "MAR", "04": "APR", "05": "MAG", "06": "GIU",
+                    "07": "LUG", "08": "AGO", "09": "SET", "10": "OTT", "11": "NOV", "12": "DIC"
+                };
+
+                const cardHTML = `
+                    <article class="history-card">
+                        <div class="date-badge">
+                            <span class="day">${day}</span>
+                            <span class="month">${monthsMap[monthNum]}</span>
+                            <span class="year">${year}</span>
+                        </div>
+                        <div class="history-info">
+                            <h3>${evento.title}</h3>
+                            <p>${evento.description}</p>
+                        </div>
+                    </article>
+                `;
+                historyContainer.innerHTML += cardHTML;
+            });
+        }
+
+        function snakeLayout() {
+            const container = document.getElementById('history-container');
+            if (!container) return;
+
+            const cards = Array.from(container.children);
+            if (cards.length === 0) return;
+
+            // 1. Pulisci le classi vecchie (importante se ridimensioni la finestra)
+            cards.forEach(card => {
+                card.classList.remove('turn', 'turn-right', 'turn-left', 'is-first', 'is-last-absolute');
+                card.style.order = ''; // Reset ordine
+            });
+
+            // 2. Calcola colonne
+            let firstRowY = cards[0].offsetTop;
+            let columns = 0;
+            for (let card of cards) {
+                if (card.offsetTop === firstRowY) columns++;
+                else break;
+            }
+
+            // Se mobile (1 colonna), aggiungi solo una linea verticale o nulla
+            if (columns <= 1) return; 
+
+            // 3. Applica logica Serpente + Linee
+            cards.forEach((card, index) => {
+                const row = Math.floor(index / columns);
+                const isOddRow = row % 2 !== 0; // Riga 1, 3, 5... (che va indietro)
+                
+                // --- A. GESTIONE ORDINE VISIVO (Serpente) ---
+                if (isOddRow) {
+                    const firstIndexInRow = row * columns;
+                    const positionInRow = index - firstIndexInRow;
+                    const invertedOrder = (firstIndexInRow + columns) - 1 - positionInRow;
+                    
+                    // Applica ordine solo se l'elemento esiste
+                    if (invertedOrder < cards.length) {
+                        card.style.order = invertedOrder;
+                    }
+                } else {
+                    card.style.order = index;
+                }
+
+                // --- B. GESTIONE LINEE E CURVE ---
+                
+                // Sei l'ultimo della riga?
+                const isLastInRow = (index + 1) % columns === 0;
+                // Sei proprio l'ultimo elemento di tutti?
+                const isLastAbsolute = index === cards.length - 1;
+
+                if (index === 0) {
+                    card.classList.add('is-first');
+                }
+
+                if (isLastAbsolute) {
+                    card.classList.add('is-last-absolute');
+                } 
+                // Se non è l'ultimo assoluto MA è l'ultimo della riga, deve curvare
+                else if (isLastInRow) {
+                    card.classList.add('turn');
+                    if (isOddRow) {
+                        // Riga dispari (va verso sinistra) -> Curva a sinistra per scendere
+                        card.classList.add('turn-left');
+                    } else {
+                        // Riga pari (va verso destra) -> Curva a destra per scendere
+                        card.classList.add('turn-right');
+                    }
+                }
+            });
+        }
+
+        // ESEGUI LA FUNZIONE
+        // 1. Appena hai finito di caricare le card dal JSON
+        // (Metti snakeLayout() alla fine del .then(data => { ... }))
+
+        // 2. Ogni volta che si ridimensiona la finestra (zoom)
+        window.addEventListener('resize', snakeLayout);
+
+        // 3. FUNZIONE PER GENERARE IL FILE .ICS (Download)
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function() {
+                generateICSFile(musicEvents);
+            });
+        }
+
+        function generateICSFile(events) {
+            // Inizio standard del file ICS
+            let icsContent = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Frankye Portfolio//Musica//IT\n";
+
+            events.forEach(evento => {
+                // Rimuovi i trattini dalla data: "1980-12-08" diventa "19801208"
+                const cleanDate = evento.date.replaceAll('-', '');
+
+                icsContent += "BEGIN:VEVENT\n";
+                // UID univoco (usiamo data + titolo rimodellato)
+                icsContent += `UID:${cleanDate}-${evento.title.replace(/\s/g, '')}@frankye.com\n`;
+                // Titolo evento
+                icsContent += `SUMMARY:🎶 ${evento.title}\n`;
+                // Descrizione
+                icsContent += `DESCRIPTION:${evento.description}\n`;
+                // Data inizio (Tutto il giorno) - VALUE=DATE è fondamentale per eventi tutto il giorno
+                icsContent += `DTSTART;VALUE=DATE:${cleanDate}\n`;
+                // Data fine (Google vuole che la fine sia il giorno dopo per gli eventi tutto il giorno)
+                // Per semplicità qui mettiamo la stessa data, la maggior parte dei calendar lo accetta come 1 giorno
+                icsContent += `DTEND;VALUE=DATE:${cleanDate}\n`;
+                icsContent += "END:VEVENT\n";
+            });
+
+            icsContent += "END:VCALENDAR";
+
+            // Crea il file virtuale e scaricalo
+            const blob = new Blob([icsContent], { type: 'text/calendar' });
+            const url = window.URL.createObjectURL(blob);
+            const tempLink = document.createElement('a');
+            tempLink.href = url;
+            tempLink.setAttribute('download', 'storia_musica_frankye.ics');
+            document.body.appendChild(tempLink);
+            tempLink.click();
+            document.body.removeChild(tempLink);
+        }
+
+        
+    }
+    </script>
+
 </body>
+
+
+
 </html>
