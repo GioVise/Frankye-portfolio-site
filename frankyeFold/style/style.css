@@ -525,7 +525,7 @@ main a:link{
 }
 .error-container h1{
     text-align: center;
-    
+    line-height: 1em;
     padding: 0 0;
 }
 .error-container img{
