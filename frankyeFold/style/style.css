@@ -67,11 +67,11 @@ html{
     align-items: center;    /* Centra verticalmente testo e immagine */
     justify-content: space-between;
     padding: 0.5em 1em;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);; /*bordino ombrato*/
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);; /*bordino ombrato*/
     margin-left: 0.9em;
     margin-right: 0.9em;
 
-    /*voglio che si nasconda quando salgo*/
+    /*voglio che si nasconda quando salgo...*/
 }
 #br_c{
     position: absolute;
@@ -512,6 +512,56 @@ main a:link{
     margin-bottom: 1em;
 }
 
+
+/*---------------------------------------------------------------------------------------------
+============================================errori=============================================
+----------------------------------------------------------------------------------------------*/
+.error-container{
+    background-color: var(--backgroundcolor);
+    color: var(--txtcolor);
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+.error-container h1{
+    text-align: center;
+    
+    padding: 0 0;
+}
+.error-container img{
+    display: block;
+    margin: 0 auto;
+    max-width: 500px;
+    height: auto;
+}
+.error-container button{
+    background-color: var(--txtcolor);
+    color: var(--backgroundcolor);
+    border: none;
+    padding: 1em 1em;
+    border-radius: 0.5em;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 0 auto;
+}
+.error-container button:hover{
+    transform: scale(1.02);
+    transition: transform 0.2s ease;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+}
+#h1-sopra{
+    text-align: center;
+    padding-top: 1.5em;
+    font-size: 2.2em;
+}
+#h1-sotto{
+    text-align: center;
+    padding-bottom: 1em;
+    font-size: 2.5em;
+}
+.errore{
+    padding: 0 0 ;
+}
 
 /*---------------------------------------------------------------------------------------------
 ============================================Footer=============================================
