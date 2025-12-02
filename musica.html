@@ -24,7 +24,7 @@
     
 </head>
 
-<body id="frankye">
+<body id="musica">
     <header>
         <nav id="menu">
         </nav>
@@ -57,7 +57,19 @@
                     <h2>La shtoria</h2>
                     <button id="download-ics-btn" class="btn-download" alt="Scarica il file ICS con gli eventi musicali per calendario personale">📆</button>
                 </div>
-                <div class="history-grid" id="history-container"></div>
+                <div class="timeline-wrapper">
+        
+                    <svg id="snake-svg">
+                        <path id="snake-path" d=""/>
+                    </svg>
+
+                    <div id="snake-follower">
+                        <img src="images/G.jpg" alt="Segnalino"> 
+                    </div>
+
+                    <div class="history-grid" id="history-container"></div>
+                
+                </div>
 
             </section>
         </section>
@@ -69,6 +81,28 @@
         </section>
         <p>Portfolio di Frankye LaMerda - &copy; 2025</p>
     </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!--sezione jS-->
     <script>
@@ -84,6 +118,7 @@
             .then(data => {
                 musicEvents = data; // Salviamo i dati per usarli anche nel download
                 renderHistoryCards(data); // Disegna le card a schermo
+                setTimeout(initSnakeSystem, 100);  // Aspettiamo 100ms che le card siano disegnate, poi accendiamo il serpente
             })
             .catch(error => console.error('Errore JSON:', error));
 
@@ -120,83 +155,148 @@
             });
         }
 
-        function snakeLayout() {
-            const container = document.getElementById('history-container');
-            if (!container) return;
+        
+        /* =========================================
+        SISTEMA SNAKE COMPLETO (ZigZag + Linea + Pallina)
+        ========================================= */
+        function initSnakeSystem() {
 
-            const cards = Array.from(container.children);
+            // Chiede al browser: "L'utente preferisce ridurre i movimenti?"
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            // Se SÌ, esci subito dalla funzione e non fare nulla.
+            if (prefersReducedMotion) return;
+
+            const container = document.getElementById('history-container');
+            const svgPath = document.getElementById('snake-path');
+            const follower = document.getElementById('snake-follower');
+            const wrapper = document.querySelector('.timeline-wrapper');
+
+            if (!container || !svgPath || !follower) return;
+
+            const cards = Array.from(container.querySelectorAll('.history-card'));
             if (cards.length === 0) return;
 
-            // 1. Pulisci le classi vecchie (importante se ridimensioni la finestra)
-            cards.forEach(card => {
-                card.classList.remove('turn', 'turn-right', 'turn-left', 'is-first', 'is-last-absolute');
-                card.style.order = ''; // Reset ordine
-            });
+            // A. FUNZIONE: ORDINA LE CARD A ZIG-ZAG (Il Serpente Visivo) 
+            function applyZigZagOrder() {
+                // 1. Resetta ordine
+                cards.forEach(card => card.style.order = '');
 
-            // 2. Calcola colonne
-            let firstRowY = cards[0].offsetTop;
-            let columns = 0;
-            for (let card of cards) {
-                if (card.offsetTop === firstRowY) columns++;
-                else break;
+                // 2. Calcola colonne
+                let firstRowY = cards[0].offsetTop;
+                let columns = 0;
+                for (let card of cards) {
+                    if (card.offsetTop === firstRowY) columns++;
+                    else break;
+                }
+
+                // Se siamo su mobile (1 colonna), non serve zig-zag
+                if (columns <= 1) return;
+
+                // 3. Inverti le righe pari
+                cards.forEach((card, index) => {
+                    const row = Math.floor(index / columns);
+                    
+                    // Se la riga è DISPARI (la seconda, la quarta...)
+                    if (row % 2 !== 0) {
+                        const firstIndexInRow = row * columns;
+                        const positionInRow = index - firstIndexInRow;
+                        
+                        const invertedOrder = (firstIndexInRow + columns) - 1 - positionInRow;
+                        
+                        if (invertedOrder < cards.length) {
+                            card.style.order = invertedOrder;
+                        }
+                    } else {
+                        card.style.order = index; // Righe pari normali
+                    }
+                });
             }
 
-            // Se mobile (1 colonna), aggiungi solo una linea verticale o nulla
-            if (columns <= 1) return; 
+            // B. FUNZIONE: DISEGNA LA LINEA SUI PUNTI ORDINATI 
+            function drawLine() {
+                let pathD = "";
+                const wrapperRect = wrapper.getBoundingClientRect();
 
-            // 3. Applica logica Serpente + Linee
-            cards.forEach((card, index) => {
-                const row = Math.floor(index / columns);
-                const isOddRow = row % 2 !== 0; // Riga 1, 3, 5... (che va indietro)
-                
-                // --- A. GESTIONE ORDINE VISIVO (Serpente) ---
-                if (isOddRow) {
-                    const firstIndexInRow = row * columns;
-                    const positionInRow = index - firstIndexInRow;
-                    const invertedOrder = (firstIndexInRow + columns) - 1 - positionInRow;
+                cards.forEach((card, index) => {
+                    const rect = card.getBoundingClientRect();
                     
-                    // Applica ordine solo se l'elemento esiste
-                    if (invertedOrder < cards.length) {
-                        card.style.order = invertedOrder;
-                    }
-                } else {
-                    card.style.order = index;
-                }
+                    const offsetX = 0;   // 0 = Centro. Metti es. 20 per spostare a destra, -20 a sinistra
+                    const offsetY = -50;  // 50 = Sposta in GIÙ di 50px (per passare sotto il testo)
 
-                // --- B. GESTIONE LINEE E CURVE ---
-                
-                // Sei l'ultimo della riga?
-                const isLastInRow = (index + 1) % columns === 0;
-                // Sei proprio l'ultimo elemento di tutti?
-                const isLastAbsolute = index === cards.length - 1;
+                    // Calcola il centro esatto
+                    const centerX = (rect.left + rect.width / 2) - wrapperRect.left + offsetX;
+                    const centerY = (rect.top + rect.height / 2) - wrapperRect.top + offsetY;
 
-                if (index === 0) {
-                    card.classList.add('is-first');
-                }
-
-                if (isLastAbsolute) {
-                    card.classList.add('is-last-absolute');
-                } 
-                // Se non è l'ultimo assoluto MA è l'ultimo della riga, deve curvare
-                else if (isLastInRow) {
-                    card.classList.add('turn');
-                    if (isOddRow) {
-                        // Riga dispari (va verso sinistra) -> Curva a sinistra per scendere
-                        card.classList.add('turn-left');
+                    if (index === 0) {
+                        pathD += `M ${centerX} ${centerY}`;
                     } else {
-                        // Riga pari (va verso destra) -> Curva a destra per scendere
-                        card.classList.add('turn-right');
+                        pathD += ` L ${centerX} ${centerY}`;
                     }
-                }
-            });
+                });
+
+                svgPath.setAttribute('d', pathD);
+            }
+
+            // C. FUNZIONE: MUOVI LA PALLINA
+            function moveFollower() {
+                const pathLength = svgPath.getTotalLength();
+                if (pathLength === 0) return;
+
+                const wrapperRect = wrapper.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Calcola percentuale scroll (0 a 1)
+                let scrollPercent = (windowHeight / 2 - wrapperRect.top) / wrapperRect.height;
+                if (scrollPercent < 0) scrollPercent = 0;
+                if (scrollPercent > 1) scrollPercent = 1;
+
+                // 1. Trova il punto CORRENTE
+                const currentLen = scrollPercent * pathLength;
+                const p1 = svgPath.getPointAtLength(currentLen);
+
+                // 2. Trova un punto FUTURO (1 pixel più avanti) per capire la direzione
+                // (Usiamo Math.min per non uscire dalla lunghezza massima)
+                const p2 = svgPath.getPointAtLength(Math.min(currentLen + 1, pathLength));
+
+                // 3. Calcola l'ANGOLO (Arcotangente)
+                // Math.atan2(y2 - y1, x2 - x1) ci dà l'angolo in radianti
+                // Moltiplichiamo per (180 / Math.PI) per convertirlo in gradi
+                let angleDeg = Math.atan2(p2.y - p1.y, p2.x - p1.x) * (180 / Math.PI);
+
+                // 4. Applica Posizione + Rotazione
+                // Aggiungiamo un offset di 90 gradi se l'immagine originale è "in piedi" ma deve "sdraiarsi"
+                // Se la testa di Frankye guarda in alto, prova a aggiungere + 90 o - 90 qui sotto
+                const rotationOffset = 0; 
+
+                follower.style.transform = `translate(${p1.x}px, ${p1.y}px) 
+                                            translate(-50%, -50%) 
+                                            rotate(${angleDeg + rotationOffset}deg)`;
+            }
+
+            // D. AGGIORNAMENTO
+            function updateAll() {
+                applyZigZagOrder(); // 1. Prima ordina i blocchi
+                // Piccolo timeout per lasciare che il browser applichi il CSS 'order' prima di calcolare le posizioni
+                setTimeout(() => {
+                    drawLine();     // 2. Poi disegna la linea sui nuovi posti
+                    moveFollower(); // 3. Poi posiziona la pallina
+                }, 50);
+            }
+
+            // Eventi
+            window.addEventListener('resize', updateAll);
+            window.addEventListener('scroll', moveFollower);
+
+            // Avvio iniziale
+            updateAll();
         }
-
-        // ESEGUI LA FUNZIONE
-        // 1. Appena hai finito di caricare le card dal JSON
-        // (Metti snakeLayout() alla fine del .then(data => { ... }))
-
         // 2. Ogni volta che si ridimensiona la finestra (zoom)
         window.addEventListener('resize', snakeLayout);
+
+
+
+
 
         // 3. FUNZIONE PER GENERARE IL FILE .ICS (Download)
         if (downloadBtn) {

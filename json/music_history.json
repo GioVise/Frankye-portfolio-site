@@ -142,7 +142,7 @@
     {
         "date": "1967-03-12",
         "title": "The Velvet Underground & Nico",
-        "description": "L'album con la banana di Warhol. Poco venduto, ma tutti quelli che l'hanno comprato hanno formato una band."
+        "description": "L'album con la banana di Warhol. sexy"
     },
     {
         "date": "1967-05-12",
@@ -282,7 +282,7 @@
     {
         "date": "1973-03-01",
         "title": "The Dark Side of the Moon",
-        "description": "L'album dei Pink Floyd che è rimasto in classifica per decenni."
+        "description": "dai."
     },
     {
         "date": "1973-03-28",
@@ -400,6 +400,11 @@
         "description": "Album dei Cranberries con la hit 'Zombie'."
     },
     {
+        "date": "2000-01-01",
+        "title": "?! - Caparezza",
+        "description": "???"
+    },
+    {
         "date": "2001-10-22",
         "title": "Wake Up and Smell the Coffee",
         "description": "Album dei Cranberries."
@@ -410,14 +415,34 @@
         "description": "Il bassista dei The Who ci lascia."
     },
     {
+        "date": "2003-01-01",
+        "title": "Verità Supposte - Caparezza",
+        "description": "IO SONO CAPAREZZA!"
+    },
+    {
         "date": "2003-04-21",
         "title": "Morte di Nina Simone",
         "description": "Addio alla grande voce del soul."
     },
     {
+        "date": "2006-01-01",
+        "title": "Habemus Capa - Caparezza",
+        "description": "ti prego torna catalessi!"
+    },
+    {
         "date": "2006-12-25",
         "title": "Morte di James Brown",
         "description": "Il Padrino del Soul muore il giorno di Natale."
+    },
+    {
+        "date": "2008-01-01",
+        "title": "Le Dimensioni del Mio Caos - Caparezza",
+        "description": "Stiamo mandando cacca nello spazio."
+    },
+    {
+        "date": "2011-01-01",
+        "title": "Il Sogno Eretico - Caparezza",
+        "description": "Non sono stato io!"
     },
     {
         "date": "2013-05-17",
@@ -435,6 +460,11 @@
         "description": "Il mondo saluta Lou Reed."
     },
     {
+        "date": "2014-01-01",
+        "title": "Museica - Caparezza",
+        "description": "Caparezza non mi piace."
+    },
+    {
         "date": "2016-01-10",
         "title": "Morte di David Bowie",
         "description": "Bowie muore due giorni dopo il suo 69° compleanno."
@@ -445,8 +475,23 @@
         "description": "Il cantante dei Linkin Park ci lascia."
     },
     {
+        "date": "2017-09-15",
+        "title": "Prisoner 709 - Caparezza",
+        "description": "Sono l'uomo che premette il grilletto!"
+    },
+    {
         "date": "2020-07-06",
         "title": "Morte di Ennio Morricone",
         "description": "Addio al Maestro."
+    },
+    {
+        "date": "2021-05-06",
+        "title": "Exuvia - Caparezza",
+        "description": "Camina, guerrero, camina, Por el sendero del dolor."
+    },
+    {
+        "date": "2025-10-31",
+        "title": "Orbit Orbit - Caparezza",
+        "description": "Ma quale adulto sono vecchio!"
     }
 ]

@@ -104,34 +104,19 @@
 
 
     <script>
-    // ==========================================
-    // FASE 1: SELEZIONE (Chi sono gli attori?)
-    // ==========================================
     
-    // Il pulsante che deve apparire
     const btnTop = document.getElementById("backtotop");
     
-    // Il punto di riferimento (la sezione content)
     const contentSection = document.querySelector(".content");
     
-    // Le due immagini dell'header da muovere
     const imgSx = document.querySelector(".scorre_su");
     const imgDx = document.querySelector(".scorre_giu");
-
-
-    // ==========================================
-    // FASE 2: ASCOLTO (Cosa stiamo aspettando?)
-    // ==========================================
     
     // "window" è la finestra del browser.
     // "addEventListener" è come dire: "Stai attento a questo evento..."
     // L'evento è 'scroll'.
     
     window.addEventListener("scroll", function() {
-        
-        // ==========================================
-        // FASE 3: AZIONE (Logica matematica)
-        // ==========================================
 
         // 1. Capiamo dove siamo (quanti pixel abbiamo scrollato dall'alto)
         let pixelScrollati = window.scrollY;
