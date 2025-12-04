@@ -7,12 +7,12 @@ img {
 }
 #breadcrumb {
     padding: 0.5em; 
-    justify-content: space-between; /* Mantiene logo a sx e link a dx */
+    justify-content: space-between;
 }
 
 #br_dx {
-    gap: 1em; /* Avvicina un po' i link */
-    font-size: 0.9em; /* Testo leggermente più piccolo */
+    gap: 1em;
+    font-size: 0.9em;
 }
 
 /*------------------------------------------------------*/
@@ -66,18 +66,14 @@ img {
 /*======================avvento=========================*/
 /*------------------------------------------------------*/
 .advent-item img {
-    width: 45px;  /* Invece di 100px */
+    width: 45px;
     height: 45px;
 }
-    
-/* Riduciamo lo spazio tra le palline */
 .tree-row {
     gap: 0.4em;
     margin-bottom: 5px;
     flex-wrap: nowrap;
 }
-
-/* La stella e il tronco si adattano */
 .star img {
     width: 70px; 
     height: 70px;
@@ -101,13 +97,17 @@ img {
 /*===================Contatti===========================*/
 /*------------------------------------------------------*/
 .contact_layout {
-    text-align: center; /* Su mobile centriamo tutto */
+    text-align: center;
 }
 .laterale_sx, .laterale_dx ul {
-    text-align: center; /* Anche i link tornano al centro */
+    text-align: center;
 }
 .laterale_dx{
     margin-top: 1em;
+}
+.contact-form {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /*------------------------------------------------------*/

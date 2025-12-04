@@ -563,15 +563,14 @@ main a:link{
 .contact_layout{
     display: flex;
     justify-content: space-between;
-    margin-top: 2em;
 }
 .laterale_sx, .laterale_dx{
     flex: 1;
 }
 .laterale_dx {
+    display: none;
     text-align: center;
 }
-/* Se vuoi i link belli spaziati */
 .laterale_dx ul {
     list-style-type: none;
     text-align: center;
@@ -580,6 +579,73 @@ main a:link{
     margin-bottom: 1em;
 }
 
+.sotto{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10em;
+}
+.link{
+    font-size: smaller;
+}
+.link img{
+    width: 10em;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    text-align: left;
+    
+    background-color: var(--backgroundcolor);
+    padding: 1.5em;
+    border-radius: 15px;
+    border: 1px solid var(--txtcolor);
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: var(--txtcolor);
+}
+input, textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid var(--txtcolor); /* Bordo col tuo colore */
+    background-color: var(--backgroundcolor); /* Sfondo pagina */
+    color: var(--txtcolor); /* Testo tuo colore */
+    font-family: 'Lexend', sans-serif; /* Manteniamo il font */
+    font-size: 1em;
+    resize: vertical; /* Permette di allungare la textarea solo in giù */
+}
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--linkcolor); /* Diventa del colore "link" (giallo/arancio) */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.btn-send {
+    background-color: var(--txtcolor);
+    color: var(--backgroundcolor);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s;
+    margin-top: 0.5em;
+}
+.btn-send:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+.social-links-small{
+    margin-top: 0.5em;
+}
 
 /*---------------------------------------------------------------------------------------------
 ============================================errori=============================================
@@ -627,7 +693,7 @@ main a:link{
     padding-bottom: 1em;
     font-size: 2.5em;
 }
-.errore{
+.errore, .grazie{
     padding: 0 0;
 }
 
