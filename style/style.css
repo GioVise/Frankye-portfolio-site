@@ -99,12 +99,15 @@ html{
     align-items: center;
 }
 .breadcrumbG{
-    height: 2em;
+    height: 3em;
     width: auto;
 }
 #menu{
     display: flex;
     gap:20px;
+}
+#menu a{
+    padding: 1em ;
 }
 #breadcrumb a:visited{
     color: var(--txtcolor);
@@ -213,6 +216,15 @@ main a:link{
 .content{
     min-height: 80vh;
     scroll-margin-top: 3em; /*spazio tra inizio sezione e breadcrumb*/
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+    margin: auto;
+}
+.content h1{
+    font-size: 3em;
 }
 
 /*---------------------------------------------------------------------------------------------
@@ -221,7 +233,6 @@ main a:link{
 .presentazione{
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
 }
 .presentazione img{
     width: 12em;
@@ -641,7 +652,7 @@ footer p {
 
     /*stile del pulsante*/
     background-color: var(--backgroundcolor);
-    background-image: url('../images/arrow,.png');
+    background-image: url('../images/arrow,.webp');
     background-repeat: no-repeat;
     background-position: center ;
     background-size: 50%; /* Fai l'icona un po' più piccola del pulsante */
