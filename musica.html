@@ -306,31 +306,45 @@
         }
 
         function generateICSFile(events) {
-            // Inizio standard del file ICS
             let icsContent = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Frankye Portfolio//Musica//IT\n";
 
             events.forEach(evento => {
-                // Rimuovi i trattini dalla data: "1980-12-08" diventa "19801208"
+                // Rimuovi i trattini dalla data per il formato ICS (YYYYMMDD)
                 const cleanDate = evento.date.replaceAll('-', '');
 
                 icsContent += "BEGIN:VEVENT\n";
-                // UID univoco (usiamo data + titolo rimodellato)
+                
+                // UID univoco
                 icsContent += `UID:${cleanDate}-${evento.title.replace(/\s/g, '')}@frankye.com\n`;
-                // Titolo evento
+                
+                // Info base
                 icsContent += `SUMMARY:🎶 ${evento.title}\n`;
-                // Descrizione
                 icsContent += `DESCRIPTION:${evento.description}\n`;
-                // Data inizio (Tutto il giorno) - VALUE=DATE è fondamentale per eventi tutto il giorno
+                
+                // Date (Tutto il giorno)
                 icsContent += `DTSTART;VALUE=DATE:${cleanDate}\n`;
-                // Data fine (Google vuole che la fine sia il giorno dopo per gli eventi tutto il giorno)
-                // Per semplicità qui mettiamo la stessa data, la maggior parte dei calendar lo accetta come 1 giorno
+                // Per gli eventi tutto il giorno, alcuni calendar preferiscono che la fine sia il giorno dopo, 
+                // ma per compatibilità semplice spesso mettere la stessa data con RRULE funziona bene.
                 icsContent += `DTEND;VALUE=DATE:${cleanDate}\n`;
+
+                //Ripeti questo evento (FREQ) ogni anno (YEARLY)
+                icsContent += "RRULE:FREQ=YEARLY\n"; 
+
+                //AVVISO (Notifica) alle 9:00 del mattino:
+                
+                icsContent += "BEGIN:VALARM\n";
+                icsContent += "TRIGGER:P0DT9H0M0S\n"; // 9 ore dopo l'inizio (che è mezzanotte) -> ore 09:00
+                icsContent += "ACTION:DISPLAY\n";
+                icsContent += "DESCRIPTION:Ricorrenza Musicale\n";
+                icsContent += "END:VALARM\n";
+                
+
                 icsContent += "END:VEVENT\n";
             });
 
             icsContent += "END:VCALENDAR";
 
-            // Crea il file virtuale e scaricalo
+            // Crea e scarica il file
             const blob = new Blob([icsContent], { type: 'text/calendar' });
             const url = window.URL.createObjectURL(blob);
             const tempLink = document.createElement('a');
