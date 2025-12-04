@@ -108,6 +108,11 @@ img {
 .contact-form {
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 0;
+}
+.sotto{
+    flex-direction: column;
+    gap:1em;
 }
 
 /*------------------------------------------------------*/
