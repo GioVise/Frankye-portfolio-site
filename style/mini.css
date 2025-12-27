@@ -8,11 +8,8 @@ img {
 #breadcrumb {
     padding: 0.5em; 
     justify-content: space-between;
-}
-
-#br_dx {
     gap: 1em;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 /*------------------------------------------------------*/
