@@ -191,6 +191,7 @@
 
         </section>
 
+        <!-- Pulsante di reset -->
         <div class="reset-container">
             <button id="reset-btn">Richiudi tutto</button>
         </div>
@@ -242,6 +243,10 @@
 
         // 3. FUNZIONE: GESTIONE CLICK SUL CALENDARIO
         function handleAdventClick(element) {
+            /*rendo inutilizzabile la parte che blocca le caselle visto che è passato interamente dicembre 2025.
+            Se volessi riattivarla, togli i commenti a questa parte e alla parte superiore della funzione.ù
+
+            
             const dayNumber = parseInt(element.getAttribute('data-day')); 
 
             const today = new Date();
@@ -251,6 +256,7 @@
             //Se NON siamo a Dicembre (11) OPPURE se il giorno della casella è maggiore di oggi
             const isFuture = (currentMonth !== 11) || (dayNumber > currentDay); 
 
+            
             if (isFuture) {
                 
                 if (!element.classList.contains('closed')) return;
@@ -276,6 +282,7 @@
                 //Non salvare nulla in memoria.
                 return; 
             }
+                */
 
             
             if (element.classList.contains('closed')) {
